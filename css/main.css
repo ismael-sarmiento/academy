@@ -184,6 +184,12 @@ details[open]::details-content { block-size: auto; }
 #heroCode { margin: 0; padding: 20px 22px 26px; font: 14px/1.7 var(--font-mono); height: 236px; overflow: hidden; white-space: pre-wrap; }
 :is(#heroCode, .dbg-code) .k { color: var(--code-keyword); } :is(#heroCode, .dbg-code) .s { color: var(--code-string); } :is(#heroCode, .dbg-code) .c { color: var(--code-comment); }
 #heroCode .caret { display: inline-block; width: 8px; height: 1.1em; background: var(--gold-400); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+.lesson-controls { display: flex; justify-content: flex-end; padding: 0 14px 12px; }
+.lesson-controls .lesson-toggle { min-height: 44px; max-width: 100%; padding: 8px 12px; font-size: 12px;
+  color: var(--mist-100); border-color: var(--ink-500); }
+.lesson-controls .lesson-toggle:hover { border-color: var(--gold-400); background: var(--ink-800); }
+.lesson-controls .lesson-toggle:focus-visible { outline: 2px solid var(--gold-400); outline-offset: 3px; }
+.lesson-controls .lesson-toggle[hidden] { display: none; }
 .handnote { position: absolute; right: -6px; bottom: -58px; display: flex; align-items: flex-start; gap: 4px; color: var(--gold); transform: rotate(-4deg); }
 .handnote span { font-family: var(--font-script); font-size: 38px; line-height: 1; transition: opacity .3s; white-space: nowrap; }
 .handnote svg { width: 80px; transform: scaleX(-1) rotate(-30deg); margin-top: -26px; }

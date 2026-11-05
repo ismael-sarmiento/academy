@@ -61,7 +61,9 @@
         "code": "-- Clase · SQL analítico\nSELECT pais, SUM(importe) AS total\nFROM ventas\nGROUP BY pais\nORDER BY total DESC\nLIMIT 5;\n-- → los 5 mercados que más venden"
       }
     ],
-    "tabsLabel": "Mini-clases de ejemplo"
+    "tabsLabel": "Mini-clases de ejemplo",
+    "lessonsPause": "Pausar ejemplos",
+    "lessonsResume": "Reanudar ejemplos"
   },
   "about": {
     "eyebrow": "Quiénes somos",

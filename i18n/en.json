@@ -61,7 +61,9 @@
         "code": "-- Class · Analytical SQL\nSELECT country, SUM(amount) AS total\nFROM sales\nGROUP BY country\nORDER BY total DESC\nLIMIT 5;\n-- → the 5 best-selling markets"
       }
     ],
-    "tabsLabel": "Sample mini-lessons"
+    "tabsLabel": "Sample mini-lessons",
+    "lessonsPause": "Pause examples",
+    "lessonsResume": "Resume examples"
   },
   "about": {
     "eyebrow": "About us",
