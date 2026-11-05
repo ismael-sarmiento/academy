@@ -269,6 +269,7 @@ details[open]::details-content { block-size: auto; }
 .world-card > * { position: relative; }
 .world-card h3 { font-size: 28px; margin: 12px 0 10px; }
 .world-card p { color: var(--mist-200); max-width: 46ch; margin: 0; }
+.world-card .btn { align-self: flex-start; margin-top: 22px; }
 .facts-card { padding: 28px; display: flex; flex-direction: column; gap: 14px; }
 .facts-card h3 { font-size: 20px; }
 .fact { font-size: 18px; line-height: 1.55; flex: 1; margin: 0; transition: opacity .25s; }

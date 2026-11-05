@@ -333,10 +333,12 @@
   "resources": {
     "eyebrow": "Recursos",
     "title": "Recursos para seguir aprendiendo",
-    "lead": "Curiosidades de datos e IA, una consola de Python para practicar y, muy pronto, un mundo 3D para recorrer la academia.",
-    "worldTag": "Próximamente",
-    "worldTitle": "Mundo IsAcademy 3D",
-    "worldDesc": "Un mundo abierto en 3D para recorrer la academia, conversar con sus personajes y descubrir curiosidades del mundo de los datos y la IA.",
+    "lead": "Curiosidades de datos e IA, una consola de Python para practicar e IsGame, nuestro mundo 3D para aprender jugando.",
+    "worldTag": "Nuevo",
+    "worldTitle": "IsGame · Neo Academia",
+    "worldDesc": "Nuestro juego de mundo abierto: recorre Neo Academia, habla con sus mentores, completa misiones y descubre 40 curiosidades de datos e IA. En el navegador y gratis.",
+    "worldCta": "Jugar a IsGame",
+    "worldHref": "/isgame/",
     "factsTitle": "Curiosidades de datos e IA",
     "factsNext": "Otra curiosidad",
     "facts": [
@@ -1133,11 +1135,17 @@
           "videojuego",
           "juego",
           "metaverso",
-          "proximamente"
+          "proximamente",
+          "isgame",
+          "neo academia"
         ],
         "boost": 6,
-        "answer": "El Mundo IsAcademy 3D está en preparación: un mundo abierto para recorrer la academia y descubrir curiosidades de datos e IA. Mientras tanto, en Recursos tienes curiosidades y una consola de Python para practicar.",
+        "answer": "IsGame ya está disponible: nuestro juego de mundo abierto en el navegador para recorrer Neo Academia, hablar con sus mentores y aprender datos e IA jugando.",
         "actions": [
+          {
+            "label": "Jugar a IsGame",
+            "href": "/isgame/"
+          },
           {
             "label": "Ver Recursos",
             "href": "#recursos"
