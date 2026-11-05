@@ -445,7 +445,10 @@
     "home": "Inicio",
     "mail": "Correo",
     "privacy": "Privacidad",
-    "privacyHref": "/privacy/"
+    "privacyHref": "/privacy/",
+    "homeHref": "/",
+    "cvHref": "/cv/",
+    "isgameHref": "/isgame/"
   },
   "open": {
     "eyebrow": "Aulas abiertas",

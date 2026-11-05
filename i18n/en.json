@@ -445,7 +445,10 @@
     "home": "Home",
     "mail": "Email",
     "privacy": "Privacy",
-    "privacyHref": "/privacy/?lang=en"
+    "privacyHref": "/privacy/?lang=en",
+    "homeHref": "/?lang=en",
+    "cvHref": "/cv/?lang=en",
+    "isgameHref": "/isgame/?lang=en"
   },
   "open": {
     "eyebrow": "Open classes",

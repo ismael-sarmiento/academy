@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-msAzvqFjhe+bNBZgHEtIG9XGpeVut9WkVz3a9hGQV7s=' 'sha256-2IrbR/ryTR8PhOFflouDxHeBQlN8pIPyQcwaH8efphU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-quthhSW1ZMX6zaKT4kN8LrO/Q3HHUMW5YLuGoXg4yYw=' 'sha256-2IrbR/ryTR8PhOFflouDxHeBQlN8pIPyQcwaH8efphU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
   <script id="startup-guard">// Embedded before first paint by the three sites' generators. No imports: recovery must survive a broken module graph.
 (() => {
   'use strict';
@@ -89,13 +89,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/assets/ds/fonts/allura-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/ds/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261105b">
-  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261105b">
-  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261105b">
-  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261105b">
-  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261105b">
-  <link rel="stylesheet" href="css/main.css?v=20261105b">
-  <link rel="stylesheet" href="css/print.css?v=20261105b" media="print">
+  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261105d">
+  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261105d">
+  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261105d">
+  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261105d">
+  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261105d">
+  <link rel="stylesheet" href="css/main.css?v=20261105d">
+  <link rel="stylesheet" href="css/print.css?v=20261105d" media="print">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -318,7 +318,7 @@
       </svg>
       <p class="hook" data-i18n-html="intro.hook">La Inteligencia Artificial (IA) te da respuestas. <b>Aquí te enseñamos a pensar.</b></p>
       <div class="intro-actions">
-        <button class="btn btn-primary btn-lg" data-action="enter" data-i18n="intro.enter">Entrar a la academia</button>
+        <button class="btn btn-primary btn-lg btn-arrow" data-action="enter" data-i18n="intro.enter">Entrar a la academia</button>
         <a class="btn btn-lg" href="/isacademy/isacademy.pdf" data-pdf download><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19.5h14"/></svg><span data-i18n="pdf.download">Descargar PDF</span></a>
       </div>
     </div>
@@ -583,7 +583,7 @@
           </article>
           <article class="facts-card card reveal">
             <h3 data-i18n="resources.factsTitle">Curiosidades de datos e IA</h3>
-            <p class="fact" id="fact" aria-live="polite"><!--pre-->El perceptrón, una de las primeras redes neuronales artificiales, es de 1958.<!--/pre--></p>
+            <p class="fact" id="fact" aria-live="polite"><!--pre-->En 1950, Alan Turing propuso el «juego de la imitación», hoy test de Turing: ¿puede una máquina hacerse pasar por humana en una conversación?<!--/pre--></p>
             <button class="btn" data-action="fact" data-i18n="resources.factsNext">Otra curiosidad</button>
           </article>
           <article class="console-card card card--static reveal" id="consola">
@@ -695,55 +695,55 @@
   <footer class="footer">
     <div class="container footer-row">
       <span data-i18n-html="footer.rights">© 2026 IsAcademy · by <a href="/">Ismael Sarmiento</a></span>
-      <!-- the footer of every site of the universe (portada tools/build.py): the other sites, then the ways to reach us -->
+      <!-- the footer of every site of the universe (portada tools/build.py): the other sites, the ways to reach us, Privacy, back to top -->
       <span class="footer-links">
-        <a href="/privacy/" data-i18n="footer.privacy" data-i18n-href="footer.privacyHref">Privacidad</a>
-        <a href="/" data-i18n="footer.home">Inicio</a>
-        <a href="/cv/">CV Online</a>
-        <a href="/isgame/">IsGame</a>
+        <a href="/" data-i18n="footer.home" data-i18n-href="footer.homeHref">Inicio</a>
+        <a href="/cv/" data-i18n-href="footer.cvHref">CV Online</a>
+        <a href="/isgame/" data-i18n-href="footer.isgameHref">IsGame</a>
         <a id="footerWa" href="https://wa.me/34613371874" target="_blank" rel="noopener">WhatsApp <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
         <a id="footerMail" href="mailto:ismaelantonio.professional@gmail.com" data-i18n="footer.mail">Correo</a>
         <a href="https://www.linkedin.com/in/ismael-sarmiento/" target="_blank" rel="noopener">LinkedIn <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
         <a href="https://github.com/ismael-sarmiento" target="_blank" rel="noopener">GitHub <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
+        <a href="/privacy/" data-i18n="footer.privacy" data-i18n-href="footer.privacyHref">Privacidad</a>
       </span>
-      <a href="#hero" data-i18n="footer.top">Volver arriba</a>
+      <a class="footer-top" href="#hero" data-i18n="footer.top">Volver arriba</a>
     </div>
   </footer>
 
 
   <script type="importmap">{
   "imports": {
-    "./js/app.js": "./js/app.js?v=20261105b",
-    "./js/assistant.js": "./js/assistant.js?v=20261105b",
-    "./js/config.js": "./js/config.js?v=20261105b",
-    "./js/console.js": "./js/console.js?v=20261105b",
-    "./js/core/dom.js": "./js/core/dom.js?v=20261105b",
-    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261105b",
-    "./js/core/highlight.js": "./js/core/highlight.js?v=20261105b",
-    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261105b",
-    "./js/debugger.js": "./js/debugger.js?v=20261105b",
-    "./js/form.js": "./js/form.js?v=20261105b",
-    "./js/i18n.js": "./js/i18n.js?v=20261105b",
-    "./js/intro.js": "./js/intro.js?v=20261105b",
-    "./js/lessons.js": "./js/lessons.js?v=20261105b",
-    "./js/nav.js": "./js/nav.js?v=20261105b",
-    "./js/opening.js": "./js/opening.js?v=20261105b",
-    "./js/pdf.js": "./js/pdf.js?v=20261105b",
-    "./js/prerender.js": "./js/prerender.js?v=20261105b",
-    "./js/python-worker.js": "./js/python-worker.js?v=20261105b",
-    "./js/sections.js": "./js/sections.js?v=20261105b",
-    "./js/theme.js": "./js/theme.js?v=20261105b",
-    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261105b",
-    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261105b",
-    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261105b",
-    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261105b",
-    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261105b",
-    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261105b",
-    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261105b",
-    "/assets/ds/views.js": "/assets/ds/views.js?v=20261105b"
+    "./js/app.js": "./js/app.js?v=20261105d",
+    "./js/assistant.js": "./js/assistant.js?v=20261105d",
+    "./js/config.js": "./js/config.js?v=20261105d",
+    "./js/console.js": "./js/console.js?v=20261105d",
+    "./js/core/dom.js": "./js/core/dom.js?v=20261105d",
+    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261105d",
+    "./js/core/highlight.js": "./js/core/highlight.js?v=20261105d",
+    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261105d",
+    "./js/debugger.js": "./js/debugger.js?v=20261105d",
+    "./js/form.js": "./js/form.js?v=20261105d",
+    "./js/i18n.js": "./js/i18n.js?v=20261105d",
+    "./js/intro.js": "./js/intro.js?v=20261105d",
+    "./js/lessons.js": "./js/lessons.js?v=20261105d",
+    "./js/nav.js": "./js/nav.js?v=20261105d",
+    "./js/opening.js": "./js/opening.js?v=20261105d",
+    "./js/pdf.js": "./js/pdf.js?v=20261105d",
+    "./js/prerender.js": "./js/prerender.js?v=20261105d",
+    "./js/python-worker.js": "./js/python-worker.js?v=20261105d",
+    "./js/sections.js": "./js/sections.js?v=20261105d",
+    "./js/theme.js": "./js/theme.js?v=20261105d",
+    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261105d",
+    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261105d",
+    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261105d",
+    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261105d",
+    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261105d",
+    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261105d",
+    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261105d",
+    "/assets/ds/views.js": "/assets/ds/views.js?v=20261105d"
   }
 }</script>
-  <script type="module" data-startup-entry src="js/app.js?v=20261105b"></script>
+  <script type="module" data-startup-entry src="js/app.js?v=20261105d"></script>
   <!-- Cloudflare Web Analytics (cookieless; the same site as Inicio and CV Online) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1af8978bb58b4f6cb3771790a71c784c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
