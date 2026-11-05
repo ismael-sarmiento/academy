@@ -2,7 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-T1vio/tfS6G1UbgI06QCZfGNZR+o8ov6wP3bwYY5RX4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-msAzvqFjhe+bNBZgHEtIG9XGpeVut9WkVz3a9hGQV7s=' 'sha256-2IrbR/ryTR8PhOFflouDxHeBQlN8pIPyQcwaH8efphU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <script id="startup-guard">// Embedded before first paint by the three sites' generators. No imports: recovery must survive a broken module graph.
+(() => {
+  'use strict';
+  if (globalThis.isaStartup) return;
+  const root = document.documentElement;
+  const cleanups = new Set();
+  let state = 'pending';
+  try {
+    const theme = localStorage.getItem('isa-theme');
+    if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
+  } catch { /* static content also works when browser storage is unavailable */ }
+  root.classList.add('js');
+
+  const stopWaiting = () => {
+    clearTimeout(deadline);
+    document.removeEventListener('error', entryError, true);
+  };
+  function fail() {
+    if (state === 'failed') return;
+    state = 'failed';
+    stopWaiting();
+    root.classList.remove('js', 'i18n-wait', 'sig-handoff');
+    const intro = document.getElementById('intro');
+    const heldFocus = intro?.contains(document.activeElement);
+    // Release only the isolation registered by the intro, not unrelated inert content.
+    for (const cleanup of cleanups) {
+      try { cleanup(); } catch { /* one failed cleanup must not prevent the others */ }
+    }
+    cleanups.clear();
+    document.body?.classList.remove('intro-open', 'entering');
+    if (intro) intro.hidden = true;
+    document.querySelectorAll('.intro-flyer').forEach(el => el.remove());
+    if (heldFocus) {
+      const title = document.querySelector('main h1');
+      title?.setAttribute('tabindex', '-1');
+      title?.focus({ preventScroll: true });
+    }
+  }
+  function entryError(event) {
+    if (event.target?.matches?.('script[data-startup-entry]')) fail();
+  }
+  const deadline = setTimeout(fail, 10000);
+  document.addEventListener('error', entryError, true);
+  globalThis.isaStartup = Object.freeze({
+    isFailed: () => state === 'failed',
+    ready() {
+      if (state === 'failed') return false;
+      state = 'ready';
+      stopWaiting();
+      return true;
+    },
+    fail,
+    onFailure(cleanup) {
+      if (state === 'failed') { cleanup(); return () => {}; }
+      cleanups.add(cleanup);
+      return () => cleanups.delete(cleanup);
+    },
+  });
+})();
+</script>
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>IsAcademy · Clases de programación e IA online · Humanos en un mundo artificial</title>
@@ -29,12 +89,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/assets/ds/fonts/allura-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/ds/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261105a">
-  <link rel="stylesheet" href="css/main.css?v=20261105a">
-  <link rel="stylesheet" href="css/print.css?v=20261105a" media="print">
+  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261105b">
+  <link rel="stylesheet" href="css/main.css?v=20261105b">
+  <link rel="stylesheet" href="css/print.css?v=20261105b" media="print">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -522,7 +583,7 @@
           </article>
           <article class="facts-card card reveal">
             <h3 data-i18n="resources.factsTitle">Curiosidades de datos e IA</h3>
-            <p class="fact" id="fact" aria-live="polite"><!--pre-->Python debe su nombre al grupo de humor Monty Python, no a la serpiente.<!--/pre--></p>
+            <p class="fact" id="fact" aria-live="polite"><!--pre-->El perceptrón, una de las primeras redes neuronales artificiales, es de 1958.<!--/pre--></p>
             <button class="btn" data-action="fact" data-i18n="resources.factsNext">Otra curiosidad</button>
           </article>
           <article class="console-card card card--static reveal" id="consola">
@@ -649,43 +710,40 @@
     </div>
   </footer>
 
-  <noscript><div style="padding:24px"><h1>IsAcademy · Aquí te enseñamos a pensar</h1>
-    <p>Clases online con Ismael Sarmiento: teoría que se entiende, práctica real y gamificación. Aulas abiertas gratuitas cada 15 días.</p>
-    <ul><li>Python</li><li>Programación orientada a objetos</li><li>SQL</li><li>Analítica de datos</li><li>Big Data · Spark</li><li>Data Engineering</li><li>Inteligencia Artificial</li><li>TFG · TFM</li><li>Orientación profesional</li></ul>
-    <p>Escríbenos a <a href="mailto:ismaelantonio.professional@gmail.com">ismaelantonio.professional@gmail.com</a>. Activa JavaScript para ver la web completa.</p></div></noscript>
+
   <script type="importmap">{
   "imports": {
-    "./js/app.js": "./js/app.js?v=20261105a",
-    "./js/assistant.js": "./js/assistant.js?v=20261105a",
-    "./js/config.js": "./js/config.js?v=20261105a",
-    "./js/console.js": "./js/console.js?v=20261105a",
-    "./js/core/dom.js": "./js/core/dom.js?v=20261105a",
-    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261105a",
-    "./js/core/highlight.js": "./js/core/highlight.js?v=20261105a",
-    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261105a",
-    "./js/debugger.js": "./js/debugger.js?v=20261105a",
-    "./js/form.js": "./js/form.js?v=20261105a",
-    "./js/i18n.js": "./js/i18n.js?v=20261105a",
-    "./js/intro.js": "./js/intro.js?v=20261105a",
-    "./js/lessons.js": "./js/lessons.js?v=20261105a",
-    "./js/nav.js": "./js/nav.js?v=20261105a",
-    "./js/opening.js": "./js/opening.js?v=20261105a",
-    "./js/pdf.js": "./js/pdf.js?v=20261105a",
-    "./js/prerender.js": "./js/prerender.js?v=20261105a",
-    "./js/python-worker.js": "./js/python-worker.js?v=20261105a",
-    "./js/sections.js": "./js/sections.js?v=20261105a",
-    "./js/theme.js": "./js/theme.js?v=20261105a",
-    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261105a",
-    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261105a",
-    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261105a",
-    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261105a",
-    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261105a",
-    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261105a",
-    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261105a",
-    "/assets/ds/views.js": "/assets/ds/views.js?v=20261105a"
+    "./js/app.js": "./js/app.js?v=20261105b",
+    "./js/assistant.js": "./js/assistant.js?v=20261105b",
+    "./js/config.js": "./js/config.js?v=20261105b",
+    "./js/console.js": "./js/console.js?v=20261105b",
+    "./js/core/dom.js": "./js/core/dom.js?v=20261105b",
+    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261105b",
+    "./js/core/highlight.js": "./js/core/highlight.js?v=20261105b",
+    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261105b",
+    "./js/debugger.js": "./js/debugger.js?v=20261105b",
+    "./js/form.js": "./js/form.js?v=20261105b",
+    "./js/i18n.js": "./js/i18n.js?v=20261105b",
+    "./js/intro.js": "./js/intro.js?v=20261105b",
+    "./js/lessons.js": "./js/lessons.js?v=20261105b",
+    "./js/nav.js": "./js/nav.js?v=20261105b",
+    "./js/opening.js": "./js/opening.js?v=20261105b",
+    "./js/pdf.js": "./js/pdf.js?v=20261105b",
+    "./js/prerender.js": "./js/prerender.js?v=20261105b",
+    "./js/python-worker.js": "./js/python-worker.js?v=20261105b",
+    "./js/sections.js": "./js/sections.js?v=20261105b",
+    "./js/theme.js": "./js/theme.js?v=20261105b",
+    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261105b",
+    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261105b",
+    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261105b",
+    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261105b",
+    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261105b",
+    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261105b",
+    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261105b",
+    "/assets/ds/views.js": "/assets/ds/views.js?v=20261105b"
   }
 }</script>
-  <script type="module" src="js/app.js?v=20261105a"></script>
+  <script type="module" data-startup-entry src="js/app.js?v=20261105b"></script>
   <!-- Cloudflare Web Analytics (cookieless; the same site as Inicio and CV Online) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1af8978bb58b4f6cb3771790a71c784c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

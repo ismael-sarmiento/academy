@@ -1,10 +1,17 @@
 // Logo intro: the calligraphic "Is" is sketched by hand, then an AI "decodes" the word Academy.
 import { sleep, reducedMotion } from './core/dom.js';
-import { isolateDialog } from '/assets/ds/ds.js';
+import { isolateDialog, releaseDialog } from '/assets/ds/ds.js';
 
 const GLYPHS = '01<>/{}#$%&@=+*ABCDEFXYZ';
 const DASH = 3000;
 let skipped = false;
+let detachFailure = () => {};
+
+export function cancelIntro(root) {
+  skipped = true;
+  detachFailure();
+  releaseDialog(root);
+}
 
 function animate(duration, step) {
   return new Promise(resolve => {
@@ -88,6 +95,9 @@ function finalState(root) {
 }
 
 export async function runIntro(root) {
+  const startup = globalThis.isaStartup;
+  if (!startup || startup.isFailed()) return;
+  detachFailure = startup.onFailure(() => cancelIntro(root));
   root.tabIndex = -1;
   isolateDialog(root);
   root.focus({ preventScroll: true });

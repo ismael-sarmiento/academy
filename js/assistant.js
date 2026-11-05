@@ -49,7 +49,7 @@ export function initAssistant(actionHandler) {
   alan = createAssistant({
     ...texts(),
     fabId: 'assistantFab',
-    startHidden: true,   // js/opening.js shows it when the intro ends
+    startHidden: !document.body.classList.contains('entered'),   // may load after the intro has already ended
     match: q => toShared(match(q)),
     onAction: ({ href, action, arg }) => actionHandler({ href, action, book: arg }),
   });

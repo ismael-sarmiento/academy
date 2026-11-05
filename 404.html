@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'sha256-KaZIxH9yWyrFHHSH+XjAoH81rczaEqL+Dy1HluVUAYs=' 'sha256-L/FK0FujY9ymBUdBXtSLdQZX/f6r1qoRnbpJ0nM4ttk='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://isa-forms.ismaelantonio-professional.workers.dev; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'sha256-YHbqxVxCzdRKhei3NbyAogE9hVlBW3e+kwMmL/MhAc8=' 'sha256-juadm49WhnfypDYx4agIFNdnu6n1OOA+EETqcBOCMUw='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://isa-forms.ismaelantonio-professional.workers.dev; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Página no encontrada · Ismael Sarmiento</title>
@@ -15,18 +15,79 @@
   <link rel="icon" href="/assets/brand/favicon-light-32.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)" data-theme-icon="light">
   <link rel="icon" href="/assets/brand/favicon-dark-32.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: dark)" data-theme-icon="dark">
   <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
-  <script>var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('isa-theme');if(t==='light'||t==='dark')d.dataset.theme=t;var q=new URLSearchParams(location.search).get('lang');if(q==='en'||(q!=='es'&&localStorage.getItem('isa-lang')==='en'))d.classList.add('i18n-wait');var h=+sessionStorage.getItem('sig-handoff');if(h&&Date.now()-h<4000)d.classList.add('sig-handoff')}catch(e){}</script>
+  <script>var d=document.documentElement;try{var t=localStorage.getItem('isa-theme');if(t==='light'||t==='dark')d.dataset.theme=t;var q=new URLSearchParams(location.search).get('lang');if(q==='en'||(q!=='es'&&localStorage.getItem('isa-lang')==='en'))d.classList.add('i18n-wait');var h=+sessionStorage.getItem('sig-handoff');if(h&&Date.now()-h<4000)d.classList.add('sig-handoff')}catch(e){}
+// Embedded before first paint by the three sites' generators. No imports: recovery must survive a broken module graph.
+(() => {
+  'use strict';
+  if (globalThis.isaStartup) return;
+  const root = document.documentElement;
+  const cleanups = new Set();
+  let state = 'pending';
+  try {
+    const theme = localStorage.getItem('isa-theme');
+    if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
+  } catch { /* static content also works when browser storage is unavailable */ }
+  root.classList.add('js');
+
+  const stopWaiting = () => {
+    clearTimeout(deadline);
+    document.removeEventListener('error', entryError, true);
+  };
+  function fail() {
+    if (state === 'failed') return;
+    state = 'failed';
+    stopWaiting();
+    root.classList.remove('js', 'i18n-wait', 'sig-handoff');
+    const intro = document.getElementById('intro');
+    const heldFocus = intro?.contains(document.activeElement);
+    // Release only the isolation registered by the intro, not unrelated inert content.
+    for (const cleanup of cleanups) {
+      try { cleanup(); } catch { /* one failed cleanup must not prevent the others */ }
+    }
+    cleanups.clear();
+    document.body?.classList.remove('intro-open', 'entering');
+    if (intro) intro.hidden = true;
+    document.querySelectorAll('.intro-flyer').forEach(el => el.remove());
+    if (heldFocus) {
+      const title = document.querySelector('main h1');
+      title?.setAttribute('tabindex', '-1');
+      title?.focus({ preventScroll: true });
+    }
+  }
+  function entryError(event) {
+    if (event.target?.matches?.('script[data-startup-entry]')) fail();
+  }
+  const deadline = setTimeout(fail, 10000);
+  document.addEventListener('error', entryError, true);
+  globalThis.isaStartup = Object.freeze({
+    isFailed: () => state === 'failed',
+    ready() {
+      if (state === 'failed') return false;
+      state = 'ready';
+      stopWaiting();
+      return true;
+    },
+    fail,
+    onFailure(cleanup) {
+      if (state === 'failed') { cleanup(); return () => {}; }
+      cleanups.add(cleanup);
+      return () => cleanups.delete(cleanup);
+    },
+  });
+})();
+</script>
   <link rel="preload" href="/assets/ds/fonts/allura-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/ds/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/base.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/intro.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/ds/circuit.css?v=20261105a">
-  <link rel="stylesheet" href="/assets/hub.css?v=20261105a">
-  <script type="importmap">{"imports":{"/assets/ds/ds.js":"/assets/ds/ds.js?v=20261105a","/assets/ds/frame-guard.js":"/assets/ds/frame-guard.js?v=20261105a","/assets/ds/views.js":"/assets/ds/views.js?v=20261105a","/assets/ds/favicon.js":"/assets/ds/favicon.js?v=20261105a","/assets/ds/i18n.js":"/assets/ds/i18n.js?v=20261105a","/assets/ds/signature.js":"/assets/ds/signature.js?v=20261105a","/assets/ds/fx.js":"/assets/ds/fx.js?v=20261105a","/assets/ds/intro.js":"/assets/ds/intro.js?v=20261105a","/assets/ds/avatar.js":"/assets/ds/avatar.js?v=20261105a","/assets/ds/assistant.js":"/assets/ds/assistant.js?v=20261105a","/assets/hub.js":"/assets/hub.js?v=20261105a"}}</script>
-  <script type="module" src="/assets/hub.js?v=20261105a"></script>
+  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/base.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/intro.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/ds/circuit.css?v=20261105b">
+  <link rel="stylesheet" href="/assets/hub.css?v=20261105b">
+  <script type="importmap">{"imports":{"/assets/ds/ds.js":"/assets/ds/ds.js?v=20261105b","/assets/ds/frame-guard.js":"/assets/ds/frame-guard.js?v=20261105b","/assets/ds/views.js":"/assets/ds/views.js?v=20261105b","/assets/ds/favicon.js":"/assets/ds/favicon.js?v=20261105b","/assets/ds/i18n.js":"/assets/ds/i18n.js?v=20261105b","/assets/ds/signature.js":"/assets/ds/signature.js?v=20261105b","/assets/ds/fx.js":"/assets/ds/fx.js?v=20261105b","/assets/ds/intro.js":"/assets/ds/intro.js?v=20261105b","/assets/ds/avatar.js":"/assets/ds/avatar.js?v=20261105b","/assets/ds/assistant.js":"/assets/ds/assistant.js?v=20261105b","/assets/hub.js":"/assets/hub.js?v=20261105b"}}</script>
+  <script type="module" data-startup-entry src="/assets/hub.js?v=20261105b"></script>
 </head>
 <body>
   <header class="topbar">

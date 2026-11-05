@@ -25,7 +25,7 @@
    cross-fade between sites is never aborted by a viewport that changes size */
 html { scroll-behavior: smooth; scroll-padding-top: 84px; interpolate-size: allow-keywords; scrollbar-gutter: stable; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-body:not(.entered) { overflow: hidden; }
+.js body:not(.entered) { overflow: hidden; }
 h1, h2, h3 { line-height: 1.15; margin: 0; font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
 p { margin: 0 0 14px; }
 a { color: var(--gold-text); }
@@ -47,8 +47,9 @@ h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
 }
 
 /* reveal on scroll: a short rise with a natural ease, staggered by --d */
-.reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s var(--ease-out) var(--d, 0s), transform .6s var(--ease-out) var(--d, 0s); }
-.reveal.in { opacity: 1; transform: none; }
+.reveal { opacity: 1; transform: none; transition: opacity .6s var(--ease-out) var(--d, 0s), transform .6s var(--ease-out) var(--d, 0s); }
+.js .reveal { opacity: 0; transform: translateY(12px); }
+.js .reveal.in { opacity: 1; transform: none; }
 
 /* smooth opening of every <details> (FAQ, subjects) where the browser supports it */
 details::details-content { block-size: 0; overflow: clip; transition: block-size .35s var(--ease-out), content-visibility .35s allow-discrete; }
@@ -100,7 +101,8 @@ details[open]::details-content { block-size: auto; }
 /* ===================== 4. Intro and opening ===================== */
 /* the measures of the intro shared by every site (/assets/ds/intro.css): same start, same width and, with the logo at
    1000 / 1401 of the signature, the same "Is" as in Inicio and CV Online */
-#intro { position: fixed; inset: 0; z-index: 50; display: grid; justify-items: center; align-content: start;
+#intro { display: none; }
+.js #intro { position: fixed; inset: 0; z-index: 50; display: grid; justify-items: center; align-content: start;
   padding: max(12vh, 72px) 24px 24px; background: var(--bg); overflow: hidden auto; }
 #intro.gone { display: none; }
 #intro .stage { width: min(92vw, 1160px, 100%); text-align: center; position: relative; z-index: 1; }
@@ -170,6 +172,9 @@ details[open]::details-content { block-size: auto; }
 .trust li { font-size: 13.5px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); }
 .trust li:first-child { border-color: var(--gold); }
 .hero-visual { position: relative; }
+/* H07: these widgets have no static content. Keep the reading/contact path useful without the application. */
+html:not(.js) .hero-visual, html:not(.js) #consola { display: none; }
+html:not(.js) .hero-grid { grid-template-columns: minmax(0, 1fr); }
 .code-card { background: var(--ink-850); color: var(--mist-100); border-radius: 16px; box-shadow: 0 30px 70px rgba(10, 14, 40, .35); overflow: hidden; border: 1px solid rgba(255, 255, 255, .08);
   transition: transform .5s var(--ease-out), box-shadow .5s ease; }
 @media (hover: hover) and (pointer: fine) { .code-card:hover { transform: translateY(-3px); box-shadow: 0 36px 80px rgba(10, 14, 40, .42); } }
@@ -413,5 +418,5 @@ details[open]::details-content { block-size: auto; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }

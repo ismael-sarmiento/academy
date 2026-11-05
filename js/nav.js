@@ -66,8 +66,9 @@ function initSpotlight() {
 
 // ---------- phones: the assistant button steps aside over the booking form and while typing ----------
 // so it never covers the send button, the code editor or sits on top of the keyboard
-function initFabTuck() {
+export function initFabTuck() {
   const fab = $('#assistantFab');
+  if (!fab) return;
   let overForm = false, typing = false;
   const update = () => fab.classList.toggle('fab-tucked', isPhone() && (overForm || typing));
   new IntersectionObserver(([e]) => { overForm = e.isIntersecting; update(); }, { threshold: .15 }).observe($('#contacto'));
@@ -83,5 +84,4 @@ export function initNav() {
   initHomeLinks();
   initScrollProgress();
   initSpotlight();
-  initFabTuck();
 }
