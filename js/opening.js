@@ -1,4 +1,4 @@
-// Opening (the exit of IsAcademy's scene, js/intro.js): a human hand takes the "Is" to the left, a robotic hand takes
+// Opening (the exit of IsAcademy's scene, js/intro.js), about 2.2 s: a human hand takes the "Is" to the left, a robotic hand takes
 // "Academy" to the right, and the academy landing appears in between. The shared intro (/assets/ds/intro.js) runs it
 // only with motion, under its own safety net, and ends the intro when it calls end().
 const EASE_OUT = 'cubic-bezier(.2, .8, .2, 1)';
@@ -127,7 +127,7 @@ export async function exitAcademy(intro, end) {
 
   // 2) shrink the logo to leave room for the hands on both sides
   const room = Math.min(1, (innerWidth * (phone ? .5 : .56)) / logo.getBoundingClientRect().width);
-  await done(logo.animate([{ transform: 'none' }, { transform: `scale(${room})` }], { duration: 450, easing: EASE_OUT, fill: 'forwards' }));
+  await done(logo.animate([{ transform: 'none' }, { transform: `scale(${room})` }], { duration: 280, easing: EASE_OUT, fill: 'forwards' }));
 
   // 3) the hands come in with motion blur and settle on the words
   const isBox = gIs.getBoundingClientRect();
@@ -147,7 +147,7 @@ export async function exitAcademy(intro, end) {
   Object.assign(robot.style, { left: `${rTip.x - 24 * k}px`, top: `${rTip.y - 84 * k}px`, transformOrigin: '6% 52%' });
   const inFromLeft = -(hTip.x + 40);
   const inFromRight = innerWidth - rTip.x + 320 * k + 40;
-  const enter = { duration: 950, delay: 120, easing: EASE_OUT, fill: 'forwards' };
+  const enter = { duration: 650, delay: 40, easing: EASE_OUT, fill: 'forwards' };
   await Promise.all([
     done(human.animate([
       { opacity: 0, transform: `translate(${inFromLeft}px, 46px) rotate(-12deg)`, filter: 'blur(6px)' },
@@ -160,21 +160,21 @@ export async function exitAcademy(intro, end) {
   ]);
 
   // 4) pinch: the fingers close and the contact points spark (gold = human, cyan = machine)
-  const pinch = { duration: 180, fill: 'forwards', easing: 'ease-in' };
+  const pinch = { duration: 130, fill: 'forwards', easing: 'ease-in' };
   robot.animate([{ transform: 'none' }, { transform: 'scale(.96)' }], pinch);
   await done(human.animate([{ transform: 'none' }, { transform: 'scale(.96)' }], pinch));
   // a discreet glint where the fingers touch the letters
   burst(hTip.x, hTip.y, { color: '#f2d18b', count: 6, speed: 1.6 });
   burst(rTip.x, rTip.y, { color: '#9fe6ff', count: 6, speed: 1.6 });
-  await new Promise(r => setTimeout(r, 140));
+  await new Promise(r => setTimeout(r, 70));
 
   // 5) pull apart: a faint ink trail behind the "Is", a few pixels behind "Academy"; the site fades in underneath
   const userPerPx = 1000 / logoBox.width; // svg user units per CSS px
   const outLeft = -(isBox.right + 80);
   const outRight = innerWidth - acBox.left + 80;
-  const pull = { duration: 1050, easing: EASE_IN_OUT, fill: 'forwards' };
+  const pull = { duration: 800, easing: EASE_IN_OUT, fill: 'forwards' };
   // the site shows up only once the words are well apart, so it never competes with the logo
-  setTimeout(() => revealSite(), 600);
+  setTimeout(() => revealSite(), 450);
   const bg = getComputedStyle(intro).backgroundColor;
   let emitting = true, frame = 0;
   (function emit() {
@@ -192,9 +192,9 @@ export async function exitAcademy(intro, end) {
     done(gIs.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${outLeft * userPerPx}px)` }], pull)),
     done(robot.animate([{ transform: 'scale(.96)' }, { transform: `translateX(${outRight}px) scale(.96) rotate(4deg)` }], pull)),
     done(gAc.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${outRight * userPerPx}px)` }], pull)),
-    done(gAc.animate([{ opacity: 1 }, { opacity: 1, offset: .55 }, { opacity: 0 }], { duration: 1050, fill: 'forwards' })),
-    done(gIs.animate([{ opacity: 1 }, { opacity: 1, offset: .55 }, { opacity: 0 }], { duration: 1050, fill: 'forwards' })),
-    done(intro.animate([{ backgroundColor: bg }, { backgroundColor: 'transparent' }], { ...pull, duration: 700, delay: 520 })),
+    done(gAc.animate([{ opacity: 1 }, { opacity: 1, offset: .55 }, { opacity: 0 }], { duration: 800, fill: 'forwards' })),
+    done(gIs.animate([{ opacity: 1 }, { opacity: 1, offset: .55 }, { opacity: 0 }], { duration: 800, fill: 'forwards' })),
+    done(intro.animate([{ backgroundColor: bg }, { backgroundColor: 'transparent' }], { ...pull, duration: 550, delay: 400 })),
   ]);
   emitting = false;
   end();
