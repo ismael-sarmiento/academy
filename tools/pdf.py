@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Writes the downloadable brochure of IsAcademy with headless Chrome, from the page itself (css/print.css):
 
-  isacademy.pdf           Spanish, light   (/isacademy/?pdf)
-  isacademy-en.pdf        English, light   (/isacademy/?lang=en&pdf)
-  isacademy-dark.pdf      Spanish, dark    (/isacademy/?pdf=dark)
-  isacademy-en-dark.pdf   English, dark    (/isacademy/?lang=en&pdf=dark)
+  isacademy.pdf           Spanish, light   (/academy/?pdf)
+  isacademy-en.pdf        English, light   (/academy/?lang=en&pdf)
+  isacademy-dark.pdf      Spanish, dark    (/academy/?pdf=dark)
+  isacademy-en-dark.pdf   English, dark    (/academy/?lang=en&pdf=dark)
 
 ?pdf skips the intro and reveals everything (js/app.js); the "Descargar PDF" link of the intro picks the file of the
 language and theme shown (js/pdf.js). Run it with the universe served locally (the portada at the root, this
@@ -24,6 +24,6 @@ for name, query in (('isacademy.pdf', '?pdf'), ('isacademy-en.pdf', '?lang=en&pd
                     ('isacademy-dark.pdf', '?pdf=dark'), ('isacademy-en-dark.pdf', '?lang=en&pdf=dark')):
     out = ROOT / name
     subprocess.run([CHROME, '--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--hide-scrollbars',
-                    '--virtual-time-budget=15000', f'--print-to-pdf={out}', f'{BASE}/isacademy/{query}'],
+                    '--virtual-time-budget=15000', f'--print-to-pdf={out}', f'{BASE}/academy/{query}'],
                    check=True, capture_output=True)
     print(f'wrote {out.name} ({out.stat().st_size // 1024} KB)')

@@ -34,7 +34,7 @@ html = re.sub(r"(?:'sha256-[A-Za-z0-9+/=]+'\s*)+", f"'sha256-{digest}' 'sha256-{
 (root / 'index.html').write_text(html)
 print(f'version → {v} ({len(modules)} modules, import map sha256-{digest[:10]}…)')
 PY
-# unknown /isacademy/... addresses get the 404 of every site (portada tools/build.py; same origin, absolute paths):
+# unknown /academy/... addresses get the 404 of every site (portada tools/build.py; same origin, absolute paths):
 # build the portada first
 HUB_404=../ismael-sarmiento.github.io/404.html
 if [ -f "$HUB_404" ]; then cp "$HUB_404" 404.html; echo "404.html ← portada"; fi

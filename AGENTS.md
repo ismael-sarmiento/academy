@@ -1,4 +1,4 @@
-# AGENTS.md — isacademy
+# AGENTS.md — academy (IsAcademy)
 
 ## Parent
 
@@ -8,7 +8,9 @@ Global roots (L0):
 
 ## Purpose
 
-Entry point for any agent working on the IsAcademy promotional website (GitHub Pages, static).
+Entry point for any agent working on the IsAcademy promotional website (GitHub Pages, static), served at
+`https://isuniverse.dev/academy/`. Repository `academy`, a copy with history of `isacademy`, which now only redirects
+`/isacademy/` here: printed posters and QR codes point there, so never delete it or its redirect pages.
 Personal project of Ismael Sarmiento; only the global L0 protocols apply
 (Plan al Milímetro before each phase, close-out recap after each task).
 
@@ -23,7 +25,7 @@ Personal project of Ismael Sarmiento; only the global L0 protocols apply
 
 ## Rules
 
-- Static only: no backend, no build step, no API keys in the repo. Relative paths (site lives under `/isacademy/`).
+- Static only: no backend, no build step, no API keys in the repo. Relative paths (site lives under `/academy/`).
 - Every user-facing string lives in `i18n/es.json` and `i18n/en.json`; keep both in sync.
 - Both themes (light and dark) and phone portrait (375×812) must be checked on every UI change.
 - The professional phone +34 613 371 874 (WhatsApp) is public since 2026-10-17 (`js/config.js`); never publish any other number.

@@ -8,7 +8,8 @@ Web de **IsAcademy by Ismael Sarmiento**, academia online de programación, dato
 (Python, POO, SQL, analítica, Big Data/Spark, Data Engineering, IA, TFG/TFM y orientación profesional).
 Su objetivo es captar alumnos: todas las secciones llevan al contacto.
 
-- **URL de producción:** https://ismael-sarmiento.github.io/isacademy/
+- **URL de producción:** https://isuniverse.dev/academy/
+- **Repositorio:** `ismael-sarmiento/academy`, copia con historial de `isacademy` (que ahora solo redirige `/isacademy/` aquí; los carteles y QR apuntan allí).
 - **Hosting:** GitHub Pages (sitio 100 % estático, sin backend ni build).
 - **Idiomas:** español e inglés · **Temas:** claro y oscuro.
 
@@ -41,7 +42,7 @@ js/lessons.js           Mini-clases del hero
 js/nav.js               Scroll: aparición, menú activo, progreso, brillo de tarjetas, enlaces de inicio
 js/intro.js             Animación del logo
 js/opening.js           Cinemática de apertura (manos SVG)
-(fx)                    Partículas de la cinemática: /assets/ds/fx.js, compartidas con Inicio y CV Online
+(fx)                    Partículas de la cinemática: /assets/ds/fx.js, compartidas con Inicio y IsProfile
 js/console.js           Interfaz de la consola y botón Detener
 js/core/python-runtime.js Controlador de sesión, integridad y plazos
 js/python-worker.js     Pyodide y trazador en un Web Worker del navegador
@@ -92,7 +93,7 @@ python3 tools/pdf.py http://127.0.0.1:8777/   # regenera los cuatro folletos isa
 ## Despliegue
 
 GitHub Pages publica la rama `main` desde la raíz del repositorio en cada cambio, en
-https://ismael-sarmiento.github.io/isacademy/. No hay paso de build.
+https://isuniverse.dev/academy/. No hay paso de build.
 
 ## Contacto (formulario)
 

@@ -20,7 +20,7 @@ PRINT = ROOT / 'assets/brand/print'
 FONTS = (ROOT / 'assets/fonts').as_uri()
 CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 WHATSAPP = '613 371 874'
-WEB = 'ismael-sarmiento.github.io/isacademy'
+WEB = 'isuniverse.dev/academy'
 
 es = json.loads((ROOT / 'i18n/es.json').read_text())
 motto = re.sub(r'<b>(.*?)</b>', r'<b>\1</b>', es['intro']['hook'])                      # «La IA te da respuestas. <b>Aquí…</b>»

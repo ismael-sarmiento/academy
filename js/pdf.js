@@ -3,7 +3,7 @@
 import { currentLang, onLangChange } from './i18n.js';
 import { isDark, onThemeChange } from './theme.js';
 
-const pdfName = (lang, dark) => `/isacademy/isacademy${lang === 'en' ? '-en' : ''}${dark ? '-dark' : ''}.pdf`;
+const pdfName = (lang, dark) => `/academy/isacademy${lang === 'en' ? '-en' : ''}${dark ? '-dark' : ''}.pdf`;
 
 export function initPdfLinks() {
   const sync = () => document.querySelectorAll('[data-pdf]').forEach(a => a.setAttribute('href', pdfName(currentLang(), isDark())));

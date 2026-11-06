@@ -78,8 +78,8 @@
     ],
     "linkedin": "Ver perfil en LinkedIn ↗",
     "photoAlt": "Ismael Sarmiento, fundador de IsAcademy",
-    "cv": "Ver CV Online",
-    "cvHref": "/cv/",
+    "cv": "Ver IsProfile · CV Online",
+    "cvHref": "/profile/",
     "photoLinkedinLabel": "Ver el perfil de Ismael Sarmiento en LinkedIn (se abre en una pestaña nueva)"
   },
   "method": {
@@ -338,7 +338,7 @@
     "worldTitle": "IsGame · Neo Academia",
     "worldDesc": "Nuestro juego de mundo abierto: recorre Neo Academia, habla con sus mentores, completa misiones y descubre 40 curiosidades de datos e IA. En el navegador y gratis.",
     "worldCta": "Jugar a IsGame",
-    "worldHref": "/isgame/",
+    "worldHref": "/game/",
     "factsTitle": "Curiosidades de datos e IA",
     "factsNext": "Otra curiosidad",
     "facts": [
@@ -447,8 +447,8 @@
     "privacy": "Privacidad",
     "privacyHref": "/privacy/",
     "homeHref": "/",
-    "cvHref": "/cv/",
-    "isgameHref": "/isgame/"
+    "cvHref": "/profile/",
+    "isgameHref": "/game/"
   },
   "open": {
     "eyebrow": "Aulas abiertas",
@@ -1147,7 +1147,7 @@
         "actions": [
           {
             "label": "Jugar a IsGame",
-            "href": "/isgame/"
+            "href": "/game/"
           },
           {
             "label": "Ver Recursos",
@@ -1588,9 +1588,9 @@
     "download": "Descargar PDF",
     "book": "Reserva tu clase",
     "by": "IsAcademy es la academia de Ismael Sarmiento",
-    "webHref": "https://ismael-sarmiento.github.io/isacademy/",
-    "bookHref": "https://ismael-sarmiento.github.io/isacademy/#contacto",
-    "homeHref": "https://ismael-sarmiento.github.io/",
-    "cvHref": "https://ismael-sarmiento.github.io/cv/"
+    "webHref": "https://isuniverse.dev/academy/",
+    "bookHref": "https://isuniverse.dev/academy/#contacto",
+    "homeHref": "https://isuniverse.dev/",
+    "cvHref": "https://isuniverse.dev/profile/"
   }
 }

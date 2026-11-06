@@ -3,7 +3,7 @@
 // only with motion, under its own safety net, and ends the intro when it calls end().
 const EASE_OUT = 'cubic-bezier(.2, .8, .2, 1)';
 const EASE_IN_OUT = 'cubic-bezier(.65, 0, .35, 1)';
-import { burst, ink, pixels } from '/assets/ds/fx.js';   // the particles shared with the intro of Inicio and CV Online
+import { burst, ink, pixels } from '/assets/ds/fx.js';   // the particles shared with the intro of Inicio and IsProfile
 
 // Hand art v4: viewBox 320×160, pointing right; the robot is mirrored. Fingertips pinch at ~(302, 86).
 // Illustrated look: gradient volume, rim light, nail and knuckle detail; the robot has metallic plates and LED joints.

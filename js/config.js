@@ -3,7 +3,7 @@
 // WhatsApp and phone: the owner's professional line (public since 2026-10-17).
 // public address of the site (canonical links, hreflang, share URLs)
 export const SITE = {
-  baseUrl: 'https://ismael-sarmiento.github.io/isacademy/',
+  baseUrl: 'https://isuniverse.dev/academy/',
 };
 
 export const CONTACT = {

@@ -40,7 +40,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .lead { font-size: clamp(17px, 1.6vw, 19px); color: var(--text-2); }
 h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
 @keyframes blink { 50% { opacity: 0; } }
-/* moving between the portada, CV Online and IsAcademy (same origin) is a soft cross-fade, as in /assets/ds/base.css */
+/* moving between the portada, IsProfile and IsAcademy (same origin) is a soft cross-fade, as in /assets/ds/base.css */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
   ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .45s; animation-timing-function: var(--ease-out); }
@@ -71,7 +71,7 @@ details[open]::details-content { block-size: auto; }
 .tools .btn-icon { height: 44px; padding-top: 0; padding-bottom: 0; }
 .btn[aria-disabled="true"] { opacity: .6; cursor: not-allowed; }
 .btn[disabled] { opacity: .5; cursor: progress; transform: none; box-shadow: none; }
-/* theme button: moon in light, sun in dark (the same control as the portada and CV Online) */
+/* theme button: moon in light, sun in dark (the same control as the portada and IsProfile) */
 .theme-btn .i-sun { display: none; }
 :root[data-theme="dark"] .theme-btn .i-sun { display: block; }
 :root[data-theme="dark"] .theme-btn .i-moon { display: none; }
@@ -100,7 +100,7 @@ details[open]::details-content { block-size: auto; }
 
 /* ===================== 4. Intro and opening ===================== */
 /* the measures of the intro shared by every site (/assets/ds/intro.css): same start, same width and, with the logo at
-   1000 / 1401 of the signature, the same "Is" as in Inicio and CV Online */
+   1000 / 1401 of the signature, the same "Is" as in Inicio and IsProfile */
 #intro { display: none; }
 .js #intro { position: fixed; inset: 0; z-index: 50; display: grid; justify-items: center; align-content: start;
   padding: max(12vh, 72px) 24px 24px; background: var(--bg); overflow: hidden auto; }

@@ -1,5 +1,5 @@
 // Booking form: the subjects, the open class and the email Ismael receives. Validation, the bot checks and the delivery
-// through the isa-forms Worker are the contact piece shared with CV Online (/assets/ds/contact.js).
+// through the isa-forms Worker are the contact piece shared with IsProfile (/assets/ds/contact.js).
 import { $, esc } from './core/dom.js';
 import { initContactForm, fieldError } from '/assets/ds/contact.js';
 import { t, currentLang, dictionary, onLangChange } from './i18n.js';

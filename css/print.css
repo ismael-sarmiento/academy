@@ -1,6 +1,6 @@
 /* IsAcademy — the brochure (tools/pdf.py) and printing from the browser: the page itself on two A4 pages, in the
    theme of the page. Page 1: who we are and how we teach; page 2: subjects, why us and how to start. The same paper
-   rules as the PDF of CV Online (cv/css/print.css). */
+   rules as the PDF of IsProfile (profile/css/print.css). */
 /* no page margins: the paper colour reaches the edge; the body pads every page instead (clone repeats the padding on
    each page), so the dark brochure has no white frame */
 @page { size: A4; margin: 0; }
