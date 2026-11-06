@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-quthhSW1ZMX6zaKT4kN8LrO/Q3HHUMW5YLuGoXg4yYw=' 'sha256-2IrbR/ryTR8PhOFflouDxHeBQlN8pIPyQcwaH8efphU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-mJ4m+Ll2BZilj7YlhtmT5WIjblbheEcIvSXx6Wlv/7Q=' 'sha256-2IrbR/ryTR8PhOFflouDxHeBQlN8pIPyQcwaH8efphU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
   <script id="startup-guard">// Embedded before first paint by the three sites' generators. No imports: recovery must survive a broken module graph.
 (() => {
   'use strict';
@@ -89,13 +89,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/assets/ds/fonts/allura-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/ds/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261105d">
-  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261105d">
-  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261105d">
-  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261105d">
-  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261105d">
-  <link rel="stylesheet" href="css/main.css?v=20261105d">
-  <link rel="stylesheet" href="css/print.css?v=20261105d" media="print">
+  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261106a">
+  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261106a">
+  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261106a">
+  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261106a">
+  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261106a">
+  <link rel="stylesheet" href="css/main.css?v=20261106a">
+  <link rel="stylesheet" href="css/print.css?v=20261106a" media="print">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -291,7 +291,7 @@
       <button class="btn btn-icon theme-btn" data-action="theme" data-i18n-aria="nav.themeLabel" aria-label="Cambiar modo claro / oscuro">
         <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.7 14.4A8.5 8.5 0 0 1 9.6 3.3a.7.7 0 0 0-.8-.8A10.2 10.2 0 1 0 21.5 15a.7.7 0 0 0-.8-.6Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
       </button>
-      <button id="skip" class="btn" data-i18n="intro.skip">Saltar intro</button>
+      <button id="skip" class="btn" data-action="skip" data-i18n="intro.skip">Saltar intro</button>
     </div>
     <div class="stage">
       <p id="introTitle" class="sr-only">IsAcademy by Ismael Sarmiento</p>
@@ -583,7 +583,7 @@
           </article>
           <article class="facts-card card reveal">
             <h3 data-i18n="resources.factsTitle">Curiosidades de datos e IA</h3>
-            <p class="fact" id="fact" aria-live="polite"><!--pre-->En 1950, Alan Turing propuso el «juego de la imitación», hoy test de Turing: ¿puede una máquina hacerse pasar por humana en una conversación?<!--/pre--></p>
+            <p class="fact" id="fact" aria-live="polite"><!--pre-->Apache Spark nació en 2009 como proyecto de investigación en la Universidad de California, Berkeley.<!--/pre--></p>
             <button class="btn" data-action="fact" data-i18n="resources.factsNext">Otra curiosidad</button>
           </article>
           <article class="console-card card card--static reveal" id="consola">
@@ -713,37 +713,39 @@
 
   <script type="importmap">{
   "imports": {
-    "./js/app.js": "./js/app.js?v=20261105d",
-    "./js/assistant.js": "./js/assistant.js?v=20261105d",
-    "./js/config.js": "./js/config.js?v=20261105d",
-    "./js/console.js": "./js/console.js?v=20261105d",
-    "./js/core/dom.js": "./js/core/dom.js?v=20261105d",
-    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261105d",
-    "./js/core/highlight.js": "./js/core/highlight.js?v=20261105d",
-    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261105d",
-    "./js/debugger.js": "./js/debugger.js?v=20261105d",
-    "./js/form.js": "./js/form.js?v=20261105d",
-    "./js/i18n.js": "./js/i18n.js?v=20261105d",
-    "./js/intro.js": "./js/intro.js?v=20261105d",
-    "./js/lessons.js": "./js/lessons.js?v=20261105d",
-    "./js/nav.js": "./js/nav.js?v=20261105d",
-    "./js/opening.js": "./js/opening.js?v=20261105d",
-    "./js/pdf.js": "./js/pdf.js?v=20261105d",
-    "./js/prerender.js": "./js/prerender.js?v=20261105d",
-    "./js/python-worker.js": "./js/python-worker.js?v=20261105d",
-    "./js/sections.js": "./js/sections.js?v=20261105d",
-    "./js/theme.js": "./js/theme.js?v=20261105d",
-    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261105d",
-    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261105d",
-    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261105d",
-    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261105d",
-    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261105d",
-    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261105d",
-    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261105d",
-    "/assets/ds/views.js": "/assets/ds/views.js?v=20261105d"
+    "./js/app.js": "./js/app.js?v=20261106a",
+    "./js/assistant.js": "./js/assistant.js?v=20261106a",
+    "./js/config.js": "./js/config.js?v=20261106a",
+    "./js/console.js": "./js/console.js?v=20261106a",
+    "./js/core/dom.js": "./js/core/dom.js?v=20261106a",
+    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261106a",
+    "./js/core/highlight.js": "./js/core/highlight.js?v=20261106a",
+    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261106a",
+    "./js/debugger.js": "./js/debugger.js?v=20261106a",
+    "./js/form.js": "./js/form.js?v=20261106a",
+    "./js/i18n.js": "./js/i18n.js?v=20261106a",
+    "./js/intro.js": "./js/intro.js?v=20261106a",
+    "./js/lessons.js": "./js/lessons.js?v=20261106a",
+    "./js/nav.js": "./js/nav.js?v=20261106a",
+    "./js/opening.js": "./js/opening.js?v=20261106a",
+    "./js/pdf.js": "./js/pdf.js?v=20261106a",
+    "./js/prerender.js": "./js/prerender.js?v=20261106a",
+    "./js/python-worker.js": "./js/python-worker.js?v=20261106a",
+    "./js/sections.js": "./js/sections.js?v=20261106a",
+    "./js/theme.js": "./js/theme.js?v=20261106a",
+    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261106a",
+    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261106a",
+    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261106a",
+    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261106a",
+    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261106a",
+    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261106a",
+    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261106a",
+    "/assets/ds/views.js": "/assets/ds/views.js?v=20261106a",
+    "/assets/ds/intro.js": "/assets/ds/intro.js?v=20261106a",
+    "/assets/ds/signature.js": "/assets/ds/signature.js?v=20261106a"
   }
 }</script>
-  <script type="module" data-startup-entry src="js/app.js?v=20261105d"></script>
+  <script type="module" data-startup-entry src="js/app.js?v=20261106a"></script>
   <!-- Cloudflare Web Analytics (cookieless; the same site as Inicio and CV Online) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1af8978bb58b4f6cb3771790a71c784c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

@@ -5,8 +5,9 @@ import { escapeForeignFrame } from './core/frame-guard.js';
 import { countView } from '/assets/ds/views.js';   // one anonymous page view for IsPanel (shared design system)
 import { setLang, detectLang, currentLang, onLangChange } from './i18n.js';
 import { initTheme, toggleTheme } from './theme.js';
-import { runIntro } from './intro.js';
-import { openAcademy, revealSite, finish } from './opening.js';
+import { initIntro } from '/assets/ds/intro.js';   // the one intro of every site; IsAcademy brings its scene
+import { academyScene } from './intro.js';
+import { revealSite } from './opening.js';
 import { renderSections, nextFact } from './sections.js';
 import { initForm, renderForm, setInterest } from './form.js';
 import { startLessons, refreshLessons } from './lessons.js';
@@ -33,7 +34,6 @@ function render() {
 
 // buttons and links anywhere on the page declare what they do with data-action / data-book
 const ACTIONS = {
-  enter: () => openAcademy($('#intro')).then(startLessons).catch(() => globalThis.isaStartup?.fail()),
   lang: () => setLang(currentLang() === 'es' ? 'en' : 'es', true),
   theme: toggleTheme,
   fact: nextFact,
@@ -61,6 +61,26 @@ function onAssistantAction({ href, action, book }) {
   const target = document.getElementById(href.slice(1));
   if (target?.tagName === 'DETAILS') target.open = true;
   target?.scrollIntoView({ behavior: scrollBehavior() });
+}
+
+// ?pdf and deep links: the page at once, without the intro (focus on the title, as at the end of the intro)
+function skipIntro() {
+  revealSite({ animate: false, scroll: false });
+  $('#intro').hidden = true;
+  const fab = document.getElementById('assistantFab');
+  if (fab) fab.hidden = false;
+  const h1 = $('.hero h1');
+  h1.setAttribute('tabindex', '-1');
+  h1.focus({ preventScroll: true });
+}
+
+// the end of the intro: the page (already revealed by the hands; at once after reduced motion or the safety net),
+// Alan's button and the lessons
+function afterIntro() {
+  if (!document.body.classList.contains('entered')) revealSite({ animate: false });
+  const fab = document.getElementById('assistantFab');
+  if (fab) fab.hidden = false;
+  startLessons();
 }
 
 async function boot() {
@@ -91,8 +111,7 @@ async function boot() {
   const pdfMode = new URLSearchParams(location.search).get('pdf');
   if (pdfMode !== null) {
     if (pdfMode === 'dark') document.documentElement.dataset.theme = 'dark';
-    revealSite({ animate: false, scroll: false });
-    finish($('#intro'));
+    skipIntro();
     $$('.reveal').forEach(el => el.classList.add('in'));
     startup.ready();
     return;
@@ -103,15 +122,14 @@ async function boot() {
   // deep links (e.g. /#contacto from WhatsApp or an ad) go straight to their section
   const target = location.hash && document.getElementById(location.hash.slice(1));
   if (target) {
-    revealSite({ animate: false, scroll: false });
-    finish($('#intro'));
+    skipIntro();
     requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant' }));
     startLessons();
     startup.ready();
     void loadAssistant().catch(() => console.warn('Alan is unavailable.'));
     return;
   }
-  void runIntro($('#intro')).catch(() => startup.fail());
+  initIntro({ scene: academyScene, home: '#hero', onSettle: afterIntro });
   startup.ready();
   void loadAssistant().catch(() => console.warn('Alan is unavailable.'));
 }

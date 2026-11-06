@@ -1,12 +1,9 @@
-// Opening: a human hand takes the "Is" to the left, a robotic hand takes "Academy" to the right,
-// and the academy landing appears in between.
+// Opening (the exit of IsAcademy's scene, js/intro.js): a human hand takes the "Is" to the left, a robotic hand takes
+// "Academy" to the right, and the academy landing appears in between. The shared intro (/assets/ds/intro.js) runs it
+// only with motion, under its own safety net, and ends the intro when it calls end().
 const EASE_OUT = 'cubic-bezier(.2, .8, .2, 1)';
 const EASE_IN_OUT = 'cubic-bezier(.65, 0, .35, 1)';
 import { burst, ink, pixels } from '/assets/ds/fx.js';   // the particles shared with the intro of Inicio and CV Online
-import { reducedMotion } from './core/dom.js';
-import { cancelIntro } from './intro.js';
-
-let running = false;
 
 // Hand art v4: viewBox 320×160, pointing right; the robot is mirrored. Fingertips pinch at ~(302, 86).
 // Illustrated look: gradient volume, rim light, nail and knuckle detail; the robot has metallic plates and LED joints.
@@ -114,32 +111,7 @@ export function revealSite({ animate = true, scroll = true } = {}) {
     .animate([{ opacity: 0, transform: 'scale(.985)' }, { opacity: 1, transform: 'none' }], { duration: 900, easing: EASE_OUT }));
 }
 
-export function finish(intro) {
-  if (intro.classList.contains('gone')) return;
-  cancelIntro(intro);
-  const fab = document.getElementById('assistantFab');
-  if (fab) fab.hidden = false;
-  intro.inert = true;
-  intro.classList.add('gone');
-  const h1 = document.querySelector('.hero h1');
-  h1.setAttribute('tabindex', '-1');
-  h1.focus({ preventScroll: true });
-}
-
-export async function openAcademy(intro) {
-  if (running) return;
-  running = true;
-  // safety net: never leave the visitor stuck on the intro if animations stall
-  const safety = setTimeout(() => { revealSite({ animate: false }); finish(intro); }, 6500);
-
-  if (reducedMotion()) {
-    revealSite();
-    await done(intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' }));
-    finish(intro);
-    clearTimeout(safety);
-    return;
-  }
-
+export async function exitAcademy(intro, end) {
   buildHands(intro);
   const logo = intro.querySelector('svg.logo');
   const gIs = intro.querySelector('#gIs');
@@ -225,6 +197,5 @@ export async function openAcademy(intro) {
     done(intro.animate([{ backgroundColor: bg }, { backgroundColor: 'transparent' }], { ...pull, duration: 700, delay: 520 })),
   ]);
   emitting = false;
-  finish(intro);
-  clearTimeout(safety);
+  end();
 }

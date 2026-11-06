@@ -104,7 +104,7 @@ details[open]::details-content { block-size: auto; }
 #intro { display: none; }
 .js #intro { position: fixed; inset: 0; z-index: 50; display: grid; justify-items: center; align-content: start;
   padding: max(12vh, 72px) 24px 24px; background: var(--bg); overflow: hidden auto; }
-#intro.gone { display: none; }
+#intro[hidden] { display: none; }
 #intro .stage { width: min(92vw, 1160px, 100%); text-align: center; position: relative; z-index: 1; }
 .intro-top { position: absolute; top: 16px; right: 16px; z-index: 2; display: flex; gap: 8px; }
 #intro svg.logo { display: block; width: min(828px, 65.7vw); height: auto; margin: 0 auto; overflow: visible; }
@@ -117,10 +117,11 @@ details[open]::details-content { block-size: auto; }
 .hook { font-size: clamp(16px, 2.2vw, 22px); color: var(--text-2); margin: 22px auto 0; max-width: 52ch; opacity: 0; transform: translateY(8px); transition: all .8s ease; }
 .hook b { color: var(--text); font-weight: 600; display: block; }
 .intro-actions { margin-top: 30px; opacity: 0; visibility: hidden; transition: opacity .8s ease; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-#intro .intro-actions.show { visibility: visible; }
+#intro.ready .intro-actions { visibility: visible; }
 /* the brochure (css/print.css) is printed from the page itself; on screen its blocks stay hidden */
 .print-head, .print-cta { display: none; }
-#intro .show { opacity: 1; transform: none; }
+/* the shared intro's states: .after shows the hook, .ready the actions */
+#intro.after .hook, #intro.ready .intro-actions { opacity: 1; transform: none; }
 #circuit { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; }
 #circuit path { fill: none; stroke: var(--gold); stroke-width: 1.2; }
 #circuit circle { fill: var(--gold); }

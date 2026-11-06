@@ -1,23 +1,17 @@
-// Logo intro: the calligraphic "Is" is sketched by hand, then an AI "decodes" the word Academy.
-import { sleep, reducedMotion } from './core/dom.js';
-import { isolateDialog, releaseDialog } from '/assets/ds/ds.js';
+// IsAcademy's scene of the shared intro (/assets/ds/intro.js, which owns focus, keys, "Saltar intro", the safety net,
+// reduced motion and the end): the calligraphic "Is" is sketched by hand, then an AI "decodes" the word Academy.
+// Its exit is the opening with the two hands (js/opening.js).
+import { sleep } from './core/dom.js';
+import { exitAcademy } from './opening.js';
 
 const GLYPHS = '01<>/{}#$%&@=+*ABCDEFXYZ';
 const DASH = 3000;
-let skipped = false;
-let detachFailure = () => {};
 
-export function cancelIntro(root) {
-  skipped = true;
-  detachFailure();
-  releaseDialog(root);
-}
-
-function animate(duration, step) {
+function animate(duration, step, cancelled) {
   return new Promise(resolve => {
     const t0 = performance.now();
     function tick(now) {
-      const p = skipped ? 1 : Math.min(1, (now - t0) / duration);
+      const p = cancelled() ? 1 : Math.min(1, (now - t0) / duration);
       step(p);
       if (p < 1) requestAnimationFrame(tick); else resolve();
     }
@@ -27,14 +21,14 @@ function animate(duration, step) {
 
 const easeInOut = p => (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2);
 
-async function sketchIs(svg) {
+async function sketchIs(svg, cancelled) {
   const stroke = svg.querySelector('.is-stroke');
   const ink = svg.querySelector('#inkRect');
   const box = svg.querySelector('.is-fill').getBBox();
   stroke.style.strokeDasharray = String(DASH);
   // 1) the outline is sketched, 2) ink fills it from left to right
-  await animate(1500, p => { stroke.style.strokeDashoffset = String(DASH * (1 - easeInOut(p))); });
-  await animate(700, p => { ink.setAttribute('x', String(box.x - 20)); ink.setAttribute('width', String((box.width + 60) * easeInOut(p))); });
+  await animate(1500, p => { stroke.style.strokeDashoffset = String(DASH * (1 - easeInOut(p))); }, cancelled);
+  await animate(700, p => { ink.setAttribute('x', String(box.x - 20)); ink.setAttribute('width', String((box.width + 60) * easeInOut(p))); }, cancelled);
 }
 
 // The first letter of "Academy" is drawn larger (a capital that reads as a second word, not "Isa…")
@@ -52,9 +46,8 @@ function placeCursor(svg) {
   if (text.textContent === 'Academy') svg.querySelector('.by').setAttribute('x', String(x));
 }
 
-async function typeAcademy(svg) {
+async function typeAcademy(svg, cancelled) {
   const word = 'Academy';
-  const text = svg.querySelector('.academy');
   // ~0.77 s, following the screen's own frames (one change per frame at most): the letters advance evenly, as in the
   // signature of Inicio and CV Online (/assets/ds/signature.js)
   await animate(768, p => {
@@ -62,7 +55,7 @@ async function typeAcademy(svg) {
     const noise = Array.from({ length: Math.min(2, word.length - i) }, () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)]).join('');
     setAcademy(svg, word.slice(0, i) + noise);
     placeCursor(svg);
-  });
+  }, cancelled);
   setAcademy(svg, word);
   placeCursor(svg);
 }
@@ -79,7 +72,8 @@ function drawCircuit(root) {
   });
 }
 
-function finalState(root) {
+// the logo written at once: "Saltar intro", Escape and reduced motion (the shared intro shows the hook and actions)
+function complete(root) {
   const svg = root.querySelector('svg.logo');
   const stroke = svg.querySelector('.is-stroke');
   stroke.style.strokeDasharray = String(DASH); stroke.style.strokeDashoffset = '0';
@@ -90,42 +84,25 @@ function finalState(root) {
   svg.querySelector('.cursor').style.visibility = 'hidden';
   root.querySelectorAll('#circuit path').forEach(p => { p.getAnimations().forEach(a => a.cancel()); p.style.strokeDasharray = 'none'; p.style.strokeDashoffset = '0'; });
   root.querySelectorAll('#circuit circle').forEach(c => { c.getAnimations().forEach(a => a.cancel()); c.style.opacity = 1; });
-  root.querySelectorAll('.hook, .intro-actions').forEach(el => el.classList.add('show'));
-  root.querySelector('#skip').hidden = true;
 }
 
-export async function runIntro(root) {
-  const startup = globalThis.isaStartup;
-  if (!startup || startup.isFailed()) return;
-  detachFailure = startup.onFailure(() => cancelIntro(root));
-  root.tabIndex = -1;
-  isolateDialog(root);
-  root.focus({ preventScroll: true });
-  root.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || root.classList.contains('cinema')) return;
-    const skip = root.querySelector('#skip');
-    (skip.hidden ? root.querySelector('[data-action="enter"]') : skip).click();
-  });
+// on every visit (the shared intro gives reduced-motion visitors the written logo instead)
+async function play(root, cancelled) {
   const svg = root.querySelector('svg.logo');
-  // hide the circuit traces until they are drawn
+  // hide the circuit traces until they are drawn (before the first wait: they never show undrawn)
   root.querySelectorAll('#circuit path').forEach(p => { const len = p.getTotalLength(); p.style.strokeDasharray = String(len); p.style.strokeDashoffset = String(len); });
   root.querySelectorAll('#circuit circle').forEach(c => { c.style.opacity = 0; c.style.transformBox = 'fill-box'; c.style.transformOrigin = 'center'; });
-  root.querySelector('#skip').addEventListener('click', () => { skipped = true; finalState(root); root.querySelector('[data-action="enter"]').focus(); });
   await document.fonts.ready;
-  if (skipped) return;
-  // the intro plays on every visit; reduced-motion users get the final logo directly
-  if (reducedMotion()) { skipped = true; finalState(root); return; }
+  if (cancelled()) return;
   await sleep(250);
-  if (skipped) return;
-  await sketchIs(svg);
-  if (skipped) return;
+  if (cancelled()) return;
+  await sketchIs(svg, cancelled);
+  if (cancelled()) return;
   drawCircuit(root);
-  await typeAcademy(svg);
-  if (skipped) return;
-  await animate(500, p => { svg.querySelector('.by').style.opacity = p; });
+  await typeAcademy(svg, cancelled);
+  if (cancelled()) return;
+  await animate(500, p => { svg.querySelector('.by').style.opacity = p; }, cancelled);
   svg.querySelector('.cursor').style.visibility = 'hidden';   // the caret goes out once the word is written
-  root.querySelector('.hook').classList.add('show');
-  await sleep(600);
-  root.querySelector('.intro-actions').classList.add('show');
-  root.querySelector('#skip').hidden = true;
 }
+
+export const academyScene = { play, complete, exit: exitAcademy, handoff: false };
