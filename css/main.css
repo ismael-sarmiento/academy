@@ -301,6 +301,8 @@ html:not(.js) .hero-grid { grid-template-columns: minmax(0, 1fr); }
 .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
 .footer a { color: var(--text-2); text-decoration: none; transition: color .2s; }
 .footer a:hover { color: var(--gold-text); text-decoration: underline; }
+/* a link inside a sentence of the footer («© 2026 IsAcademy · by …») is underlined: colour alone is not enough (WCAG 1.4.1, Lighthouse) */
+.footer span a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
 
 /* ===================== 6. Python console and debugger ===================== */
 .console-card { grid-column: 1 / -1; padding: 28px; }
