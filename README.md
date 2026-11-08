@@ -98,7 +98,7 @@ https://isuniverse.dev/academy/. No hay paso de build.
 ## Contacto (formulario)
 
 El formulario de «Reservar clase» pide una comprobación invisible de Cloudflare Turnstile y envía los datos al Worker
-`isa-forms` (código en el repo de la portada, `tools/cloudflare/isa-forms.js`), que verifica la comprobación y los entrega
+`isa-forms` (código en el repo privado `panel`, `isa-forms.js`), que verifica la comprobación y los entrega
 con Resend en **ismaelantonio.professional@gmail.com**, el único buzón de todas las webs. La dirección no aparece en el código.
 - Si eliges «Aula abierta», el mensaje es opcional.
 
