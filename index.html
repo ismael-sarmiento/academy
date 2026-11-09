@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-cDzGJw0WbK0NRLiKkWfo4cwRt+jS8NLDoVlSD4XxjIs=' 'sha256-2IrbR/ryTR8PhOFflouDxHeBQlN8pIPyQcwaH8efphU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com https://challenges.cloudflare.com 'wasm-unsafe-eval' 'sha256-LE+vuFxhjxMJcQMmncc9UeJyERHxhrI8aGqHmUua8G0=' 'sha256-2IrbR/ryTR8PhOFflouDxHeBQlN8pIPyQcwaH8efphU='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://isa-forms.ismaelantonio-professional.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
   <script id="startup-guard">// Embedded before first paint by the three sites' generators. No imports: recovery must survive a broken module graph.
 (() => {
   'use strict';
@@ -89,13 +89,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/assets/ds/fonts/allura-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/ds/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261109rc1">
-  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261109rc1">
-  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261109rc1">
-  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261109rc1">
-  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261109rc1">
-  <link rel="stylesheet" href="css/main.css?v=20261109rc1">
-  <link rel="stylesheet" href="css/print.css?v=20261109rc1" media="print">
+  <link rel="stylesheet" href="/assets/ds/tokens.css?v=20261109rc2">
+  <link rel="stylesheet" href="/assets/ds/contact.css?v=20261109rc2">
+  <link rel="stylesheet" href="/assets/ds/assistant.css?v=20261109rc2">
+  <link rel="stylesheet" href="/assets/ds/portrait.css?v=20261109rc2">
+  <link rel="stylesheet" href="/assets/ds/startup.css?v=20261109rc2">
+  <link rel="stylesheet" href="css/main.css?v=20261109rc2">
+  <link rel="stylesheet" href="css/print.css?v=20261109rc2" media="print">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -350,12 +350,13 @@
         </button>
       </div>
     </div>
+    <p class="language-status container" id="languageStatus" role="status" hidden></p>
   </header>
 
   <main id="site">
     <div class="print-head" aria-hidden="true">
       <p class="print-logo"><span class="is">Is</span>Academy</p>
-      <p class="print-contact"><a href="https://isuniverse.dev/academy/" data-i18n-href="pdf.webHref" rel="noopener">isuniverse.dev/academy/</a><br><a href="mailto:ismaelantonio.professional@gmail.com">ismaelantonio.professional@gmail.com</a><br><a href="tel:+34613371874">+34 613 371 874</a> · <a href="https://wa.me/34613371874" rel="noopener">WhatsApp</a></p>
+      <p class="print-contact"><a href="https://isuniverse.dev/academy/" data-i18n-href="pdf.webHref" rel="noopener noreferrer">isuniverse.dev/academy/</a><br><a href="mailto:ismaelantonio.professional@gmail.com">ismaelantonio.professional@gmail.com</a><br><a href="tel:+34613371874">+34 613 371 874</a> · <a href="https://wa.me/34613371874" rel="noopener noreferrer">WhatsApp</a></p>
     </div>
     <!-- HERO -->
     <section class="hero" id="hero">
@@ -402,7 +403,7 @@
           <p class="founder-name">Ismael Sarmiento</p>
           <p class="muted" data-i18n="about.role">Fundador y tutor · Ingeniero de datos e IA</p>
           <ul class="badges" id="aboutBadges"><!--pre--><li>5 ★ según sus alumnos</li><li>Clases online, en directo</li><!--/pre--></ul>
-          <div class="founder-links"><a class="btn btn-sm" href="/profile/" data-i18n-href="about.cvHref" data-i18n="about.cv">Ver IsProfile</a><a class="btn btn-sm linkedin" id="linkedinLink" href="https://www.linkedin.com/in/ismael-sarmiento/" target="_blank" rel="noopener" data-i18n="about.linkedin">Ver perfil en LinkedIn ↗</a></div>
+          <div class="founder-links"><a class="btn btn-sm" href="/profile/" data-i18n-href="about.cvHref" data-i18n="about.cv">Ver IsProfile</a><a class="btn btn-sm linkedin" id="linkedinLink" href="https://www.linkedin.com/in/ismael-sarmiento/" target="_blank" rel="noopener noreferrer" data-i18n="about.linkedin">Ver perfil en LinkedIn ↗</a></div>
         </div>
         <div class="reveal">
           <h2 data-i18n="about.title">Aprender sigue siendo algo humano</h2>
@@ -420,9 +421,9 @@
           <h2 data-i18n="method.title">Teoría que se entiende, práctica que se aplica</h2>
           <p class="lead" data-i18n="method.lead">Combinamos explicaciones claras, práctica con casos reales y retos con progreso visible (gamificación): así aprendes entendiendo, aplicando y sin perder la motivación.</p>
         </div>
-        <div class="pillars" id="pillars"><!--pre--><article class="card pillar reveal" style="--d:0.00s"><span class="n">1</span><h3>Bases sólidas</h3><p>Explicaciones claras, sin fórmulas mágicas: sabrás el porqué de cada cosa.</p></article><article class="card pillar reveal" style="--d:0.08s"><span class="n">2</span><h3>Práctica real</h3><p>Desde las primeras clases trabajas con casos y proyectos del sector, no con ejercicios de relleno.</p></article><article class="card pillar reveal" style="--d:0.16s"><span class="n">3</span><h3>Retos y progreso visible</h3><p>Objetivos claros y logros que mantienen la motivación y convierten el estudio en hábito.</p></article><!--/pre--></div>
+        <div class="pillars" id="pillars"><!--pre--><article class="card pillar reveal" data-reveal-delay="0"><span class="n">1</span><h3>Bases sólidas</h3><p>Explicaciones claras, sin fórmulas mágicas: sabrás el porqué de cada cosa.</p></article><article class="card pillar reveal" data-reveal-delay="8"><span class="n">2</span><h3>Práctica real</h3><p>Desde las primeras clases trabajas con casos y proyectos del sector, no con ejercicios de relleno.</p></article><article class="card pillar reveal" data-reveal-delay="16"><span class="n">3</span><h3>Retos y progreso visible</h3><p>Objetivos claros y logros que mantienen la motivación y convierten el estudio en hábito.</p></article><!--/pre--></div>
         <h3 class="sub-title reveal" data-i18n="method.stepsTitle">Cómo trabajamos contigo</h3>
-        <ol class="steps" id="steps"><!--pre--><li class="reveal" style="--d:0.00s"><h4>Análisis gratuito</h4><p>Analizamos tu caso sin coste: tu punto de partida, lo que quieres conseguir y cómo llegar.</p></li><li class="reveal" style="--d:0.08s"><h4>Plan personalizado</h4><p>Diseñamos una hoja de ruta a tu medida: temas, ritmo y objetivos claros.</p></li><li class="reveal" style="--d:0.16s"><h4>Práctica guiada</h4><p>Cada concepto se trabaja con ejercicios y retos, con la teoría justa para entenderlo.</p></li><li class="reveal" style="--d:0.24s"><h4>Proyecto real</h4><p>Aplicas lo aprendido en un proyecto propio que podrás mostrar en clase, en tu TFG o en una entrevista.</p></li><!--/pre--></ol>
+        <ol class="steps" id="steps"><!--pre--><li class="reveal" data-reveal-delay="0"><h4>Análisis gratuito</h4><p>Analizamos tu caso sin coste: tu punto de partida, lo que quieres conseguir y cómo llegar.</p></li><li class="reveal" data-reveal-delay="8"><h4>Plan personalizado</h4><p>Diseñamos una hoja de ruta a tu medida: temas, ritmo y objetivos claros.</p></li><li class="reveal" data-reveal-delay="16"><h4>Práctica guiada</h4><p>Cada concepto se trabaja con ejercicios y retos, con la teoría justa para entenderlo.</p></li><li class="reveal" data-reveal-delay="24"><h4>Proyecto real</h4><p>Aplicas lo aprendido en un proyecto propio que podrás mostrar en clase, en tu TFG o en una entrevista.</p></li><!--/pre--></ol>
         <p class="mid-cta reveal"><a class="btn btn-arrow" href="#contacto" data-i18n="cta.method">¿Te encaja? Pide tu análisis gratuito</a></p>
       </div>
     </section>
@@ -435,7 +436,7 @@
           <p class="lead" data-i18n="subjects.lead">Clases particulares online de programación, datos e IA. Elige por dónde empezar: cada materia se adapta a tu nivel, desde cero hasta avanzado.</p>
         </div>
         <div class="subjects" id="subjects"><!--pre--><div class="subject-grid">
-      <details class="subject card reveal" id="materia-python" style="--d:0.00s">
+      <details class="subject card reveal" id="materia-python" data-reveal-delay="0">
         <summary><h3 class="sname">Python</h3><span class="sgroup">Programación</span><span>De cero a programar con soltura.</span></summary>
         <div class="body">
           <h4>Qué aprenderás</h4>
@@ -444,7 +445,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="python">Reserva tu clase de Python</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-oop" style="--d:0.06s">
+      <details class="subject card reveal" id="materia-oop" data-reveal-delay="6">
         <summary><h3 class="sname">Programación orientada a objetos</h3><span class="sgroup">Programación</span><span>Diseño de código limpio y mantenible.</span></summary>
         <div class="body">
           <h4>Qué aprenderás</h4>
@@ -453,7 +454,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="oop">Reserva tu clase de POO</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-sql" style="--d:0.12s">
+      <details class="subject card reveal" id="materia-sql" data-reveal-delay="12">
         <summary><h3 class="sname">SQL</h3><span class="sgroup">Datos e IA</span><span>Consultas y modelado sobre bases de datos reales.</span></summary>
         <div class="body">
           <h4>Qué aprenderás</h4>
@@ -462,7 +463,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="sql">Reserva tu clase de SQL</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-analytics" style="--d:0.00s">
+      <details class="subject card reveal" id="materia-analytics" data-reveal-delay="0">
         <summary><h3 class="sname">Analítica de datos</h3><span class="sgroup">Datos e IA</span><span>De los datos a las decisiones.</span></summary>
         <div class="body">
           <h4>Qué aprenderás</h4>
@@ -471,7 +472,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="analytics">Reserva tu clase de analítica</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-bigdata" style="--d:0.06s">
+      <details class="subject card reveal" id="materia-bigdata" data-reveal-delay="6">
         <summary><h3 class="sname">Big Data · Spark</h3><span class="sgroup">Datos e IA</span><span>Procesamiento distribuido a gran escala.</span></summary>
         <div class="body">
           <h4>Qué aprenderás</h4>
@@ -480,7 +481,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="bigdata">Reserva tu clase de Big Data</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-de" style="--d:0.12s">
+      <details class="subject card reveal" id="materia-de" data-reveal-delay="12">
         <summary><h3 class="sname">Data Engineering</h3><span class="sgroup">Datos e IA</span><span>Pipelines, orquestación y calidad del dato.</span></summary>
         <div class="body">
           <h4>Qué aprenderás</h4>
@@ -489,7 +490,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="de">Reserva tu clase de Data Engineering</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-ia" style="--d:0.00s">
+      <details class="subject card reveal" id="materia-ia" data-reveal-delay="0">
         <summary><h3 class="sname">Inteligencia Artificial</h3><span class="sgroup">Datos e IA</span><span>Machine learning e IA generativa, con criterio.</span></summary>
         <div class="body">
           <h4>Qué aprenderás</h4>
@@ -498,7 +499,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="ia">Reserva tu clase de IA</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-tfg" style="--d:0.06s">
+      <details class="subject card reveal" id="materia-tfg" data-reveal-delay="6">
         <summary><h3 class="sname">TFG · TFM</h3><span class="sgroup">Acompañamiento</span><span>Te guiamos de la idea a la defensa. El trabajo es tuyo; el método y la seguridad, nuestros.</span></summary>
         <div class="body">
           <h4>En qué te acompañamos</h4>
@@ -507,7 +508,7 @@
           <a class="btn btn-primary" href="#contacto" data-book="tfg">Cuéntanos tu TFG o TFM y vemos cómo plantearlo</a>
         </div>
       </details>
-      <details class="subject card reveal" id="materia-careers" style="--d:0.12s">
+      <details class="subject card reveal" id="materia-careers" data-reveal-delay="12">
         <summary><h3 class="sname">Orientación profesional</h3><span class="sgroup">Acompañamiento</span><span>Data Engineer, Data Scientist o especialista en IA.</span></summary>
         <div class="body">
           <h4>En qué te acompañamos</h4>
@@ -525,7 +526,7 @@
         <div class="section-head reveal">
           <h2 data-i18n="why.title">Lo que nos hace diferentes</h2>
         </div>
-        <div class="why" id="why"><!--pre--><article class="card reveal" style="--d:0.00s"><h3>Experiencia real del sector</h3><p>Te enseña alguien que trabaja con datos e IA, no solo alguien que los ha estudiado.</p></article><article class="card reveal" style="--d:0.08s"><h3>Clases a tu medida</h3><p>Tu nivel, tus objetivos y tu ritmo marcan el plan, no un temario cerrado.</p></article><article class="card reveal" style="--d:0.16s"><h3>Para todas las edades</h3><p>Del colegio a la universidad o tu primer empleo en datos: adaptamos el lenguaje y el ritmo a cada alumno.</p></article><article class="card reveal" style="--d:0.00s"><h3>Criterio frente a la IA</h3><p>Aprendes a usar la IA con cabeza, sin depender de ella.</p></article><article class="card reveal" style="--d:0.08s"><h3>Acompañamiento cercano</h3><p>Resolvemos tus dudas con claridad y paciencia, sin prisas.</p></article><article class="card reveal" style="--d:0.16s"><h3>Online y flexible</h3><p>Desde donde estés, en horario de mañana, mediodía o tarde.</p></article><!--/pre--></div>
+        <div class="why" id="why"><!--pre--><article class="card reveal" data-reveal-delay="0"><h3>Experiencia real del sector</h3><p>Te enseña alguien que trabaja con datos e IA, no solo alguien que los ha estudiado.</p></article><article class="card reveal" data-reveal-delay="8"><h3>Clases a tu medida</h3><p>Tu nivel, tus objetivos y tu ritmo marcan el plan, no un temario cerrado.</p></article><article class="card reveal" data-reveal-delay="16"><h3>Para todas las edades</h3><p>Del colegio a la universidad o tu primer empleo en datos: adaptamos el lenguaje y el ritmo a cada alumno.</p></article><article class="card reveal" data-reveal-delay="0"><h3>Criterio frente a la IA</h3><p>Aprendes a usar la IA con cabeza, sin depender de ella.</p></article><article class="card reveal" data-reveal-delay="8"><h3>Acompañamiento cercano</h3><p>Resolvemos tus dudas con claridad y paciencia, sin prisas.</p></article><article class="card reveal" data-reveal-delay="16"><h3>Online y flexible</h3><p>Desde donde estés, en horario de mañana, mediodía o tarde.</p></article><!--/pre--></div>
         <p class="mid-cta reveal"><a class="btn btn-arrow" href="#contacto" data-i18n="cta.why">Quiero empezar</a></p>
       </div>
     </section>
@@ -555,7 +556,7 @@
       <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
       <blockquote>«Un profesor extraordinario y un pedagogo sin igual. Se desvive por el aprendizaje.»</blockquote>
       <figcaption>PT · enero de 2023</figcaption></figure><!--/pre--></div>
-        <p class="center reveal"><a id="reviewsLink" target="_blank" rel="noopener" data-i18n="reviews.source"><!--pre-->Ver todas las valoraciones en tusclasesparticulares<span class="sr-only"> (se abre en una pestaña nueva)</span><!--/pre--></a></p>
+        <p class="center reveal"><a id="reviewsLink" target="_blank" rel="noopener noreferrer" data-i18n="reviews.source"><!--pre-->Ver todas las valoraciones en tusclasesparticulares<span class="sr-only"> (se abre en una pestaña nueva)</span><!--/pre--></a></p>
         <p class="mid-cta reveal"><a class="btn btn-primary btn-arrow" href="#contacto" data-i18n="cta.reviews">Únete a ellos</a></p>
       </div>
     </section>
@@ -569,14 +570,13 @@
         </div>
         <div class="resources">
           <article class="world-card reveal">
-            <span class="tag" data-i18n="resources.worldTag">Nuevo</span>
             <h3 data-i18n="resources.worldTitle">IsGame · Neo Academia</h3>
             <p data-i18n="resources.worldDesc">Nuestro juego de mundo abierto: recorre Neo Academia, habla con sus mentores, completa misiones y descubre 40 curiosidades de datos e IA. En el navegador y gratis.</p>
             <a class="btn btn-primary btn-arrow" href="/game/" data-i18n="resources.worldCta" data-i18n-href="resources.worldHref">Jugar a IsGame</a>
           </article>
           <article class="facts-card card reveal">
             <h3 data-i18n="resources.factsTitle">Curiosidades de datos e IA</h3>
-            <p class="fact" id="fact" aria-live="polite"><!--pre-->John McCarthy acuñó el término «Inteligencia Artificial» en 1955, en la propuesta de la conferencia de Dartmouth, celebrada en 1956.<!--/pre--></p>
+            <p class="fact" id="fact" aria-live="polite"><!--pre-->Python debe su nombre al grupo de humor Monty Python, no a la serpiente.<!--/pre--></p>
             <button class="btn" data-action="fact" data-i18n="resources.factsNext">Otra curiosidad</button>
           </article>
           <article class="console-card card card--static reveal" id="consola">
@@ -663,12 +663,12 @@
             <label><span class="lbl"><span data-i18n="contact.fMessage">Cuéntanos tu caso</span> <span class="req" aria-hidden="true">*</span></span><textarea name="message" rows="4" required maxlength="2000" data-i18n-ph="contact.fMessagePh" placeholder="Qué quieres aprender, para cuándo lo necesitas, qué horario te viene bien…"></textarea></label>
             <input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <label class="check"><input type="checkbox" name="privacy" required><span data-i18n="contact.fPrivacy">He leído la información de privacidad y acepto que IsAcademy use mis datos para responder a mi solicitud.</span></label>
-            <p class="privacy muted" id="privacyText"><!--pre-->Responsable: Ismael Sarmiento (IsAcademy). Usamos los datos que facilites para responder y organizar tus clases si lo solicitas. La ficha privada, incluido el contexto de conexión disponible, se conserva 90 días. Cloudflare proporciona alojamiento, almacenamiento y protección Turnstile (<a href="https://www.cloudflare.com/turnstile-privacy-policy/" target="_blank" rel="noopener">aviso de privacidad de Turnstile</a>); Resend envía la notificación por correo. Datos, conservación, proveedores y derechos: <a href="/privacy/">aviso de privacidad</a>. Para ejercer tus derechos: <a href="mailto:ismaelantonio.professional@gmail.com">ismaelantonio.professional@gmail.com</a>.<!--/pre--></p>
+            <p class="privacy muted" id="privacyText"><!--pre-->Responsable: Ismael Sarmiento (IsAcademy). Usamos los datos que facilites para responder y organizar tus clases si lo solicitas. La ficha privada, incluido el contexto de conexión disponible, se conserva 90 días. Cloudflare proporciona alojamiento, almacenamiento y protección Turnstile (<a href="https://www.cloudflare.com/turnstile-privacy-policy/" target="_blank" rel="noopener noreferrer">aviso de privacidad de Turnstile</a>); Resend envía la notificación por correo. Datos, conservación, proveedores y derechos: <a href="/privacy/">aviso de privacidad</a>. Para ejercer tus derechos: <a href="mailto:ismaelantonio.professional@gmail.com">ismaelantonio.professional@gmail.com</a>.<!--/pre--></p>
             <p class="f-status" id="formStatus" role="status" aria-live="polite"></p>
             <button class="btn btn-primary btn-lg" type="submit" id="formSend" data-i18n="contact.fSend">Enviar solicitud</button>
           </form>
           <div class="contact-ways"><p data-i18n="contact.waysLead">Si lo prefieres, escríbenos directamente.</p>
-            <a class="btn" id="waLink" href="https://wa.me/34613371874" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="/assets/ds/icons.svg#i-whatsapp"/></svg>WhatsApp</a>
+            <a class="btn" id="waLink" href="https://wa.me/34613371874" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="/assets/ds/icons.svg#i-whatsapp"/></svg>WhatsApp</a>
             <a class="btn" id="mailLink" href="mailto:ismaelantonio.professional@gmail.com"><svg aria-hidden="true"><use href="/assets/ds/icons.svg#i-mail"/></svg><span data-i18n="contact.waysMail">Correo</span></a>
           </div>
         </div>
@@ -677,8 +677,8 @@
     <section class="print-cta" aria-hidden="true">
       <h2 data-i18n="contact.title">¿Empezamos?</h2>
       <p data-i18n="contact.sub">Cuéntanos qué quieres aprender y te proponemos un plan. El análisis inicial de tu caso es gratuito y sin compromiso.</p>
-      <p class="print-links"><a href="https://isuniverse.dev/academy/#contacto" data-i18n-href="pdf.bookHref" rel="noopener">isuniverse.dev/academy/#contacto</a> · <a href="mailto:ismaelantonio.professional@gmail.com">ismaelantonio.professional@gmail.com</a> · <a href="https://wa.me/34613371874" rel="noopener">WhatsApp +34 613 371 874</a></p>
-      <p class="print-by"><span data-i18n="pdf.by">IsAcademy es la academia de Ismael Sarmiento</span>: <a href="https://isuniverse.dev/" data-i18n-href="pdf.homeHref" rel="noopener">isuniverse.dev</a> · IsProfile: <a href="https://isuniverse.dev/profile/" data-i18n-href="pdf.cvHref" rel="noopener">isuniverse.dev/profile/</a></p>
+      <p class="print-links"><a href="https://isuniverse.dev/academy/#contacto" data-i18n-href="pdf.bookHref" rel="noopener noreferrer">isuniverse.dev/academy/#contacto</a> · <a href="mailto:ismaelantonio.professional@gmail.com">ismaelantonio.professional@gmail.com</a> · <a href="https://wa.me/34613371874" rel="noopener noreferrer">WhatsApp +34 613 371 874</a></p>
+      <p class="print-by"><span data-i18n="pdf.by">IsAcademy es la academia de Ismael Sarmiento</span>: <a href="https://isuniverse.dev/" data-i18n-href="pdf.homeHref" rel="noopener noreferrer">isuniverse.dev</a> · IsProfile: <a href="https://isuniverse.dev/profile/" data-i18n-href="pdf.cvHref" rel="noopener noreferrer">isuniverse.dev/profile/</a></p>
     </section>
   </main>
 
@@ -690,10 +690,10 @@
         <a href="/" data-i18n="footer.home" data-i18n-href="footer.homeHref">Inicio</a>
         <a href="/profile/" data-i18n-href="footer.cvHref">IsProfile</a>
         <a href="/game/" data-i18n-href="footer.isgameHref">IsGame</a>
-        <a id="footerWa" href="https://wa.me/34613371874" target="_blank" rel="noopener">WhatsApp <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
+        <a id="footerWa" href="https://wa.me/34613371874" target="_blank" rel="noopener noreferrer">WhatsApp <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
         <a id="footerMail" href="mailto:ismaelantonio.professional@gmail.com" data-i18n="footer.mail">Correo</a>
-        <a href="https://www.linkedin.com/in/ismael-sarmiento/" target="_blank" rel="noopener">LinkedIn <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
-        <a href="https://github.com/ismael-sarmiento" target="_blank" rel="noopener">GitHub <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
+        <a href="https://www.linkedin.com/in/ismael-sarmiento/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
+        <a href="https://github.com/ismael-sarmiento" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only" data-i18n="contact.newTab">(se abre en una pestaña nueva)</span></a>
         <a href="/privacy/" data-i18n="footer.privacy" data-i18n-href="footer.privacyHref">Privacidad</a>
       </span>
       <a class="footer-top" href="#hero" data-i18n="footer.top">Volver arriba</a>
@@ -703,39 +703,39 @@
 
   <script type="importmap">{
   "imports": {
-    "./js/app.js": "./js/app.js?v=20261109rc1",
-    "./js/assistant.js": "./js/assistant.js?v=20261109rc1",
-    "./js/config.js": "./js/config.js?v=20261109rc1",
-    "./js/console.js": "./js/console.js?v=20261109rc1",
-    "./js/core/dom.js": "./js/core/dom.js?v=20261109rc1",
-    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261109rc1",
-    "./js/core/highlight.js": "./js/core/highlight.js?v=20261109rc1",
-    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261109rc1",
-    "./js/debugger.js": "./js/debugger.js?v=20261109rc1",
-    "./js/form.js": "./js/form.js?v=20261109rc1",
-    "./js/i18n.js": "./js/i18n.js?v=20261109rc1",
-    "./js/intro.js": "./js/intro.js?v=20261109rc1",
-    "./js/lessons.js": "./js/lessons.js?v=20261109rc1",
-    "./js/nav.js": "./js/nav.js?v=20261109rc1",
-    "./js/opening.js": "./js/opening.js?v=20261109rc1",
-    "./js/pdf.js": "./js/pdf.js?v=20261109rc1",
-    "./js/prerender.js": "./js/prerender.js?v=20261109rc1",
-    "./js/python-worker.js": "./js/python-worker.js?v=20261109rc1",
-    "./js/sections.js": "./js/sections.js?v=20261109rc1",
-    "./js/theme.js": "./js/theme.js?v=20261109rc1",
-    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261109rc1",
-    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261109rc1",
-    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261109rc1",
-    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261109rc1",
-    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261109rc1",
-    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261109rc1",
-    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261109rc1",
-    "/assets/ds/views.js": "/assets/ds/views.js?v=20261109rc1",
-    "/assets/ds/intro.js": "/assets/ds/intro.js?v=20261109rc1",
-    "/assets/ds/signature.js": "/assets/ds/signature.js?v=20261109rc1"
+    "./js/app.js": "./js/app.js?v=20261109rc2",
+    "./js/assistant.js": "./js/assistant.js?v=20261109rc2",
+    "./js/config.js": "./js/config.js?v=20261109rc2",
+    "./js/console.js": "./js/console.js?v=20261109rc2",
+    "./js/core/dom.js": "./js/core/dom.js?v=20261109rc2",
+    "./js/core/frame-guard.js": "./js/core/frame-guard.js?v=20261109rc2",
+    "./js/core/highlight.js": "./js/core/highlight.js?v=20261109rc2",
+    "./js/core/python-runtime.js": "./js/core/python-runtime.js?v=20261109rc2",
+    "./js/debugger.js": "./js/debugger.js?v=20261109rc2",
+    "./js/form.js": "./js/form.js?v=20261109rc2",
+    "./js/i18n.js": "./js/i18n.js?v=20261109rc2",
+    "./js/intro.js": "./js/intro.js?v=20261109rc2",
+    "./js/lessons.js": "./js/lessons.js?v=20261109rc2",
+    "./js/nav.js": "./js/nav.js?v=20261109rc2",
+    "./js/opening.js": "./js/opening.js?v=20261109rc2",
+    "./js/pdf.js": "./js/pdf.js?v=20261109rc2",
+    "./js/prerender.js": "./js/prerender.js?v=20261109rc2",
+    "./js/python-worker.js": "./js/python-worker.js?v=20261109rc2",
+    "./js/sections.js": "./js/sections.js?v=20261109rc2",
+    "./js/theme.js": "./js/theme.js?v=20261109rc2",
+    "/assets/ds/assistant.js": "/assets/ds/assistant.js?v=20261109rc2",
+    "/assets/ds/avatar.js": "/assets/ds/avatar.js?v=20261109rc2",
+    "/assets/ds/favicon.js": "/assets/ds/favicon.js?v=20261109rc2",
+    "/assets/ds/fx.js": "/assets/ds/fx.js?v=20261109rc2",
+    "/assets/ds/ds.js": "/assets/ds/ds.js?v=20261109rc2",
+    "/assets/ds/frame-guard.js": "/assets/ds/frame-guard.js?v=20261109rc2",
+    "/assets/ds/contact.js": "/assets/ds/contact.js?v=20261109rc2",
+    "/assets/ds/views.js": "/assets/ds/views.js?v=20261109rc2",
+    "/assets/ds/intro.js": "/assets/ds/intro.js?v=20261109rc2",
+    "/assets/ds/signature.js": "/assets/ds/signature.js?v=20261109rc2"
   }
 }</script>
-  <script type="module" data-startup-entry src="js/app.js?v=20261109rc1"></script>
+  <script type="module" data-startup-entry src="js/app.js?v=20261109rc2"></script>
   <!-- Cloudflare Web Analytics (cookieless; the same site as Inicio and IsProfile) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1af8978bb58b4f6cb3771790a71c784c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

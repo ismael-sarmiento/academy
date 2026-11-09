@@ -20,7 +20,7 @@ export function renderForm() {
   if (sel.value) fieldError(sel, '');
   syncMessageRequired();
   const mail = `<a href="mailto:${esc(CONTACT.publicEmail)}">${esc(CONTACT.publicEmail)}</a>`;
-  const turnstile = `<a href="${TURNSTILE_PRIVACY}" target="_blank" rel="noopener">${esc(t('contact.turnstileLink'))}</a>`;
+  const turnstile = `<a href="${TURNSTILE_PRIVACY}" target="_blank" rel="noopener noreferrer">${esc(t('contact.turnstileLink'))}</a>`;
   const notice = `<a href="/privacy/${currentLang() === 'en' ? '?lang=en' : ''}">${esc(t('contact.privacyNotice'))}</a>`;
   $('#privacyText').innerHTML = esc(t('contact.privacy')).replace('{email}', mail).replace('{turnstile}', turnstile).replace('{notice}', notice);
   const privacyLink = document.querySelector('[data-i18n="footer.privacy"]');

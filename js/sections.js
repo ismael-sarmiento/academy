@@ -4,7 +4,7 @@ import { t, currentLang } from './i18n.js';
 import { CONTACT } from './config.js';
 
 let factOrder = [], factIdx = 0;
-const delay = (i, step = .08) => `style="--d:${(i * step).toFixed(2)}s"`;
+const delay = (i, step = .08) => `data-reveal-delay="${Math.round(i * step * 100)}"`;
 const list = items => items.map(x => `<li>${esc(x)}</li>`).join('');
 
 function subjectCard(s, i) {

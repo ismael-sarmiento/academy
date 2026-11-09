@@ -7,6 +7,7 @@ const VERSION = new URL(import.meta.url).searchParams.get('v') || 'dev';
 const listeners = [];
 let dict = {};
 let lang = 'es';
+let languageRequest = 0;
 
 function stored() { try { return localStorage.getItem('isa-lang'); } catch { return null; } }
 function store(v) { try { localStorage.setItem('isa-lang', v); } catch { /* storage unavailable */ } }
@@ -41,14 +42,21 @@ export function onLangChange(fn) { listeners.push(fn); }
 // texts of any language, fetched once (the form needs the Spanish names even when the page is in English)
 const cache = {};
 export function dictionary(code) {
-  cache[code] ??= fetch(`i18n/${code}.json?v=${VERSION}`).then(res => res.json());
+  cache[code] ??= fetch(`i18n/${code}.json?v=${VERSION}`).then(res => {
+    if (!res.ok) throw new Error('Language dictionary unavailable');
+    return res.json();
+  }).catch(error => { delete cache[code]; throw error; });
   return cache[code];
 }
 
 export async function setLang(next, persist = false) {
-  lang = SUPPORTED.includes(next) ? next : 'es';
-  dict = await dictionary(lang);
+  const request = ++languageRequest;
+  const target = SUPPORTED.includes(next) ? next : 'es';
+  const loaded = await dictionary(target);
+  if (request !== languageRequest) return;
   const restorePosition = persist ? rememberReadingPosition() : () => {};
+  lang = target;
+  dict = loaded;
   // only an explicit choice is remembered
   if (persist) store(lang);
   document.documentElement.lang = lang;

@@ -17,7 +17,7 @@ Su objetivo es captar alumnos: todas las secciones llevan al contacto.
 
 1. **Intro (en cada visita):** el "Is" caligráfico se esboza a mano y "Academy" se decodifica como una IA. Botones ES/EN y claro/oscuro, y "Entrar a la academia".
 2. **Apertura (cinemática):** manos ilustradas (humana dorada y robótica con LED) pellizcan las palabras y las separan con una estela sutil de tinta y píxeles. También en móvil.
-3. **Landing:** barra fija (Quiénes somos, Metodología, Materias, Por qué elegirnos, Opiniones, Recursos, **Reservar clase**; idioma y tema a la derecha), franja de **aulas abiertas gratuitas cada 15 días**, mini-clases animadas en el hero y **consola de Python** (Pyodide) en Recursos con **depurador paso a paso** (línea actual, variables, pila de llamadas, salida, puntos de parada; tope de 1000 pasos).
+3. **Landing:** barra fija (Quiénes somos, Metodología, Materias, Por qué elegirnos, Opiniones, Recursos, **Reservar clase**; idioma y tema a la derecha), franja de **aulas abiertas gratuitas cada 15 días**, mini-clases animadas en el hero y **consola de Python** (Pyodide) en Recursos con **depurador paso a paso** (línea actual, variables, pila de llamadas, salida, puntos de parada; tope de 1000 pasos). La tarjeta de IsGame sigue el tema claro/oscuro de la página mediante los tokens de superficie y texto; conserva la retícula dorada y no lleva antetítulo. Su retícula solo se desplaza con puntero preciso y sin movimiento reducido.
 4. **Asistente "Alan":** avatar ilustrado con chat local (sin servidor) que responde sobre la academia y deriva al formulario.
 5. **Reservar clase:** formulario propio que llega por email a través del Worker `isa-forms` (pieza común `/assets/ds/contact.js`).
 
@@ -89,6 +89,9 @@ python3 tools/pdf.py http://127.0.0.1:8777/   # regenera los cuatro folletos isa
 
 `tools/prerender.py` abre la web en Chrome sin ventana y copia el texto ya pintado en `index.html` (entre
 `<!--pre-->` y `<!--/pre-->`), para que los buscadores que no ejecutan JavaScript lean toda la página.
+La curiosidad exportada es la primera del diccionario, para que dos prerenders produzcan los mismos bytes. En una visita normal la curiosidad sigue siendo aleatoria.
+
+El cambio de idioma confirma el diccionario antes de modificar el idioma visible, la URL o la preferencia. Solo gana la última petición; una descarga fallida se puede reintentar. Durante la carga se bloquean ambos botones de idioma y, si falla, aparece un aviso accesible sin perder la página ni los campos del formulario. `node --test tools/qa/*.test.mjs` incluye cinco regresiones de idioma (37 pruebas en total).
 
 ## Despliegue
 
@@ -99,17 +102,18 @@ https://isuniverse.dev/academy/. No hay paso de build.
 
 El formulario de «Reservar clase» pide una comprobación invisible de Cloudflare Turnstile y envía los datos al Worker
 `isa-forms` (código en el repo privado `panel`, `isa-forms.js`), que verifica la comprobación y los entrega
-con Resend en **ismaelantonio.professional@gmail.com**, el único buzón de todas las webs. La dirección no aparece en el código.
+con Resend en **ismaelantonio.professional@gmail.com**, el buzón común de las webs personales. La dirección profesional también es pública en los enlaces de correo y en la información de privacidad; las credenciales del proveedor solo existen como secretos del Worker.
 - Si eliges «Aula abierta», el mensaje es opcional.
 
 ## Seguridad
 
 Sitio estático sin backend ni secretos. Medidas en el propio código:
 - **Content-Security-Policy** (meta en `index.html` y `404.html`): solo scripts propios y de jsDelivr (Pyodide), conexiones solo al Worker `isa-forms`, jsDelivr y la analítica de Cloudflare, Turnstile (script e iframe de challenges.cloudflare.com), sin `object`, `base` ni envíos de formularios nativos.
+- **Estilos sin `unsafe-inline`:** los retrasos de aparición se expresan con `data-reveal-delay` y reglas de `css/main.css`. No reintroducir atributos `style` en el HTML de `js/sections.js` ni en el prerender; las propiedades individuales actualizadas por las animaciones JS no requieren relajar la política.
 - **Integridad SHA384** del bootstrap `pyodide.js` (`js/core/python-runtime.js` → `PYODIDE_SRI`, fetch con integrity antes de crear el Worker). Si se cambia la versión de Pyodide, recalcula el hash:
   `curl -s <url>/pyodide.js | openssl dgst -sha384 -binary | openssl base64 -A`.
 - **Anti-clickjacking**: la web sale de cualquier marco de otro dominio (GitHub Pages no permite `frame-ancestors`).
-- Todo el texto dinámico se escapa antes de pintarse; enlaces externos con `rel="noopener"`.
+- Todo el texto dinámico se escapa antes de pintarse; enlaces externos con `rel="noopener noreferrer"`, incluido el enlace de Turnstile que reconstruye el formulario al cambiar el idioma. Las aperturas JS también incluyen ambas opciones.
 
 ## Control de calidad (antes de cada publicación)
 
@@ -119,5 +123,13 @@ Sitio estático sin backend ni secretos. Medidas en el propio código:
 2. `tools/qa/flows.js` con la web abierta: cada botón que lleva al formulario, pulsado después de los demás, deja
    «¿Qué te interesa?» como debe (materia, aula abierta o vacío; lo elegido a mano no se pisa).
 3. Claro frente a oscuro, sección a sección, en 360, 768 px y escritorio; asistente, depurador y formulario simulado.
+
+Integración real de Python, paquetes, error, depurador, puntos de parada, teclado, cancelación y recuperación (descarga el runtime público fijado; no envía formularios):
+
+```bash
+node ../kit/tools/browser_check.mjs http://127.0.0.1:8804/academy/#recursos --flow tools/qa/python.flow.js --widths 375,1280 --block cloudflareinsights.com
+```
+
+Los controles del depurador abierto, incluidos los puntos de parada y el slider, tienen al menos 44 px de área efectiva. Revisarlos abiertos: la portada de Recursos no los muestra.
 
 © Ismael Sarmiento. Todos los derechos reservados sobre el contenido y la marca IsAcademy.

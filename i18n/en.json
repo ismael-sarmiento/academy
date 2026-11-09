@@ -19,6 +19,7 @@
     "cta": "Book a class",
     "langLabel": "Switch to Spanish",
     "langShort": "ES",
+    "langError": "We could not load the language. Please try the language button again.",
     "themeLabel": "Toggle light / dark mode",
     "home": "IsAcademy, home"
   },
@@ -334,7 +335,6 @@
     "eyebrow": "Resources",
     "title": "Resources to keep learning",
     "lead": "Data and AI curiosities, a Python console to practise and IsGame, our 3D world to learn by playing.",
-    "worldTag": "New",
     "worldTitle": "IsGame · Neo Academia",
     "worldDesc": "Our open-world game: explore Neo Academia, talk to its mentors, complete missions and discover 40 data and AI curiosities. In your browser and free.",
     "worldCta": "Play IsGame",

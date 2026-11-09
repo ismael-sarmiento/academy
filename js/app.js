@@ -3,7 +3,7 @@
 import { $, $$, scrollBehavior } from './core/dom.js';
 import { escapeForeignFrame } from './core/frame-guard.js';
 import { countView } from '/assets/ds/views.js';   // one anonymous page view for IsPanel (shared design system)
-import { setLang, detectLang, currentLang, onLangChange } from './i18n.js';
+import { setLang, detectLang, currentLang, onLangChange, t } from './i18n.js';
 import { initTheme, toggleTheme } from './theme.js';
 import { initIntro } from '/assets/ds/intro.js';   // the one intro of every site; IsAcademy brings its scene
 import { academyScene } from './intro.js';
@@ -33,8 +33,27 @@ function render() {
 }
 
 // buttons and links anywhere on the page declare what they do with data-action / data-book
+let changingLanguage = false;
+async function changeLanguage() {
+  if (changingLanguage) return;
+  changingLanguage = true;
+  const buttons = $$('[data-action="lang"]');
+  const status = $('#languageStatus');
+  status.hidden = true;
+  buttons.forEach(button => { button.disabled = true; button.setAttribute('aria-busy', 'true'); });
+  try {
+    await setLang(currentLang() === 'es' ? 'en' : 'es', true);
+  } catch {
+    status.textContent = t('nav.langError');
+    status.hidden = false;
+  } finally {
+    buttons.forEach(button => { button.disabled = false; button.removeAttribute('aria-busy'); });
+    changingLanguage = false;
+  }
+}
+
 const ACTIONS = {
-  lang: () => setLang(currentLang() === 'es' ? 'en' : 'es', true),
+  lang: changeLanguage,
   theme: toggleTheme,
   fact: nextFact,
   'console-open': openConsole,
@@ -57,7 +76,7 @@ function onAssistantAction({ href, action, book }) {
   if (book || href === '#contacto') setInterest(book || null);
   if (action === 'console-open') { $('#consola').scrollIntoView({ behavior: scrollBehavior() }); openConsole(); return; }
   if (!href) return;
-  if (/^https?:/.test(href)) { window.open(href, '_blank', 'noopener'); return; }   // WhatsApp and other sites open beside the page
+  if (/^https?:/.test(href)) { window.open(href, '_blank', 'noopener,noreferrer'); return; }   // WhatsApp and other sites open beside the page
   const target = document.getElementById(href.slice(1));
   if (target?.tagName === 'DETAILS') target.open = true;
   target?.scrollIntoView({ behavior: scrollBehavior() });
