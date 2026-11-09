@@ -12,6 +12,8 @@ V="${1:-$(date +%Y%m%d%H%M)}"
 python3 - "$V" <<'PY'
 import base64, hashlib, json, pathlib, re, sys
 v = sys.argv[1]
+if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]{0,63}', v):
+    sys.exit('Invalid version: use 1–64 letters, digits, dots, underscores or hyphens; start with a letter or digit.')
 root = pathlib.Path('.').resolve()
 modules = sorted(p.relative_to(root).as_posix() for p in root.glob('js/**/*.js'))
 imports = {f'./{m}': f'./{m}?v={v}' for m in modules}
@@ -27,7 +29,7 @@ if 'id="startup-guard"' in html:
 else:
     html = html.replace('  <meta name="referrer"', f'  {guard_tag}\n  <meta name="referrer"', 1)
 html = re.sub(r'<script type="importmap">.*?</script>', lambda m: f'<script type="importmap">{importmap}</script>', html, flags=re.S)
-html = re.sub(r'(css/main\.css|css/print\.css|js/app\.js|/assets/ds/assistant\.css|/assets/ds/tokens\.css|/assets/ds/contact\.css|/assets/ds/portrait\.css|/assets/ds/startup\.css)\?v=[0-9a-z]+', rf'\1?v={v}', html)
+html = re.sub(r'''(css/main\.css|css/print\.css|js/app\.js|/assets/ds/assistant\.css|/assets/ds/tokens\.css|/assets/ds/contact\.css|/assets/ds/portrait\.css|/assets/ds/startup\.css)\?v=[^\s"'<>]+''', lambda m: f'{m[1]}?v={v}', html)
 digest = base64.b64encode(hashlib.sha256(importmap.encode()).digest()).decode()
 guard_digest = base64.b64encode(hashlib.sha256(guard.encode()).digest()).decode()
 html = re.sub(r"(?:'sha256-[A-Za-z0-9+/=]+'\s*)+", f"'sha256-{digest}' 'sha256-{guard_digest}'", html)

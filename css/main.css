@@ -144,7 +144,7 @@ details[open]::details-content { block-size: auto; }
   background: linear-gradient(90deg, var(--gold), var(--gold-2)); pointer-events: none; }
 .topbar-row { display: flex; align-items: center; gap: 18px; min-height: 68px; }
 .brand { display: inline-flex; align-items: baseline; text-decoration: none; color: var(--text); flex: none; }
-.brand-is { font-family: var(--font-script); color: var(--gold); font-size: var(--brand-is); line-height: .8; margin-right: 1px; -webkit-text-stroke: .5px currentColor; transition: transform .3s var(--ease-out);
+.brand-is { font-family: var(--font-script); color: var(--gold); font-size: var(--brand-is); line-height: .8; margin-right: 1px; transition: transform .3s var(--ease-out);
   -webkit-text-stroke: .5px currentColor; } /* the thin script gets the same visual weight as the solid gold buttons */
 .brand:hover .brand-is { transform: rotate(-4deg); }
 .brand-ac { font-size: var(--brand-name); font-weight: var(--brand-name-weight); letter-spacing: -.02em; }
@@ -186,7 +186,7 @@ html:not(.js) .hero-grid { grid-template-columns: minmax(0, 1fr); }
 .code-bar i:first-child { background: var(--danger); } .code-bar i:nth-child(2) { background: var(--gold-400); } .code-bar i:nth-child(3) { background: var(--success-strong); }
 .code-tabs { display: flex; gap: 2px; margin-left: 10px; overflow-x: auto; scrollbar-width: none; }
 .code-tabs::-webkit-scrollbar { display: none; }
-.code-tabs button { background: transparent; border: 0; color: var(--mist-500); font: 12px var(--font-mono); padding: 6px 10px; border-radius: 8px; white-space: nowrap; transition: color .2s, background .2s; }
+.code-tabs button { min-height: 44px; background: transparent; border: 0; color: var(--mist-500); font: 12px var(--font-mono); padding: 6px 10px; border-radius: 8px; white-space: nowrap; transition: color .2s, background .2s; }
 .code-tabs button[aria-selected="true"] { background: var(--ink-800); color: var(--mist-100); }
 .code-tabs button:hover { color: var(--mist-100); }
 #heroCode { margin: 0; padding: 20px 22px 26px; font: 14px/1.7 var(--font-mono); height: 236px; overflow: hidden; white-space: pre-wrap; }
@@ -400,13 +400,13 @@ html:not(.js) .hero-grid { grid-template-columns: minmax(0, 1fr); }
   .pillars, .why, .steps, .reviews { grid-template-columns: 1fr; }
   .subject-grid { grid-template-columns: 1fr; }
   .subject summary { min-height: 0; }
-  .cta-top { min-height: 40px; padding: 8px 10px; font-size: 13.5px; }
+  .cta-top { min-height: 44px; padding: 8px 10px; font-size: 13.5px; }
   .open-row { flex-direction: column; align-items: stretch; padding: 24px 20px; }
   .open-row .btn { text-align: center; }
   .console-head { flex-direction: column; align-items: flex-start; }
   .console-card { padding: 20px; }
   .topbar-row { gap: 6px 8px; }
-  .tools { gap: 6px; } .tools .btn-icon { min-width: 40px; padding: 8px; }
+  .tools { gap: 6px; } .tools .btn-icon { min-width: 44px; padding: 8px; }
 
   .logo .by { font-size: 33px; letter-spacing: 2px; transform: translateX(-30px); }
   .handnote { position: static; justify-content: flex-end; margin-top: 14px; transform: rotate(-3deg); }
@@ -417,7 +417,7 @@ html:not(.js) .hero-grid { grid-template-columns: minmax(0, 1fr); }
 @media (max-width: 520px) { .logo .by { font-size: 42px; letter-spacing: 1.5px; transform: translateX(-60px); } }
 @media (max-width: 400px) { .logo .by { font-size: 47px; letter-spacing: 1px; transform: translateX(-90px); } }
 @media (max-width: 380px) {
-  .tools { gap: 4px; } .tools .btn-icon { min-width: 38px; padding: 8px 6px; }
+  .tools { gap: 4px; } .tools .btn-icon { min-width: 44px; padding: 8px 6px; }
 }
 /* Match the shared intro's short-window signature scale (Academy viewBox / signature viewBox).
    Keep native overflow as the fallback when text and actions need more than the available height. */
