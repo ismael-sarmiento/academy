@@ -10,7 +10,7 @@ const list = items => items.map(x => `<li>${esc(x)}</li>`).join('');
 function subjectCard(s, i) {
   return `
       <details class="subject card reveal" id="materia-${s.id}" ${delay(i % 3, .06)}>
-        <summary><span class="sgroup">${esc(t(`subjects.groups.${s.group}`))}</span><h3 class="sname">${esc(s.name)}</h3><span>${esc(s.short)}</span></summary>
+        <summary><h3 class="sname">${esc(s.name)}</h3><span class="sgroup">${esc(t(`subjects.groups.${s.group}`))}</span><span>${esc(s.short)}</span></summary>
         <div class="body">
           <h4>${esc(t(s.alt ? 'subjects.learnAlt' : 'subjects.learn'))}</h4>
           <ul>${list(s.learn)}</ul>
