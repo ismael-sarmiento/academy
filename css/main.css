@@ -65,7 +65,7 @@ details[open]::details-content { block-size: auto; }
 .btn-primary { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
 .btn-primary:hover { background: var(--gold-2); border-color: var(--gold-2); box-shadow: 0 8px 22px rgba(200, 149, 63, .32); }
 .btn-lg { min-height: 52px; padding: 14px 24px; font-size: 16px; }
-.btn-sm { min-height: 40px; padding: 8px 14px; font-size: 14px; }
+.btn-sm { min-height: 44px; padding: 10px 14px; font-size: 14px; }   /* 44 px: the touch minimum of the kit (F10) */
 .btn-icon { min-width: 44px; padding: 10px 12px; }
 /* the language (text) and theme (icon) buttons share one height, whatever they hold */
 .tools .btn-icon { height: 44px; padding-top: 0; padding-bottom: 0; }
@@ -153,7 +153,7 @@ details[open]::details-content { block-size: auto; }
 .sections a { color: var(--text-2); text-decoration: none; font-size: 14.5px; padding: 8px 10px; border-radius: 10px; white-space: nowrap; transition: color .2s, background .2s; }
 .sections a:hover { color: var(--text); background: rgba(200, 149, 63, .08); }
 .sections a.active { color: var(--text); background: rgba(200, 149, 63, .14); }
-.sections .nav-cta { margin-left: 8px; padding: 8px 14px; color: var(--on-gold); }
+.sections .nav-cta { margin-left: 8px; padding: 10px 18px; min-height: 44px; border-radius: var(--radius-sm); color: var(--on-gold); }
 .sections .nav-cta:hover { background: var(--gold-2); }
 .cta-top { display: none; }
 .tools { display: flex; gap: 8px; align-items: center; flex: none; margin-left: auto; }
@@ -431,3 +431,8 @@ html:not(.js) .hero-grid { grid-template-columns: minmax(0, 1fr); }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* the select of every site (F10, as /assets/ds/base.css .ds-select): no system arrow, the same gold chevron */
+#fInterest { appearance: none; -webkit-appearance: none; padding-right: 40px; background-repeat: no-repeat;
+  background-image: linear-gradient(45deg, transparent 50%, var(--gold-text) 50%), linear-gradient(135deg, var(--gold-text) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 52%, calc(100% - 15px) 52%; background-size: 5px 5px, 5px 5px; }
