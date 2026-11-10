@@ -60,10 +60,11 @@ tools/                  bump-version.sh, prerender.py, pdf.py (folleto ES/EN × 
 Los módulos JS y los `fetch` de `i18n/` necesitan servirse por HTTP (no abrir el fichero con doble clic):
 
 ```bash
-python3 -m http.server 8000
+# Desde la raíz is-universe/, con portada y subcarpetas montadas como indica PUBLICAR.md:
+python3 kit/tools/serve_nostore.py CARPETA_TEMPORAL 8804
 ```
 
-Abrir http://localhost:8000/
+Abrir http://127.0.0.1:8804/academy/. Servir solo este checkout no aporta `/assets/ds/`, que pertenece a la portada.
 
 ## Consola y recuperación
 
@@ -82,9 +83,8 @@ La versión vive en un único sitio: el *import map* de `index.html` carga cada 
 
 ```bash
 tools/bump-version.sh <versión>
-python3 -m http.server 8766 &   # la web servida en local
-python3 tools/prerender.py      # escribe el texto en español dentro de index.html (SEO)
-python3 tools/pdf.py http://127.0.0.1:8777/   # regenera los cuatro folletos isacademy[-en][-dark].pdf
+python3 tools/prerender.py http://127.0.0.1:8804/academy/  # universo ya servido; texto español para SEO
+python3 tools/pdf.py http://127.0.0.1:8804/academy/        # cuatro folletos isacademy[-en][-dark].pdf
 ```
 
 `tools/prerender.py` abre la web en Chrome sin ventana y copia el texto ya pintado en `index.html` (entre
