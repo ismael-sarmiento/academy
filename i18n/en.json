@@ -30,7 +30,7 @@
     "cta1": "Get your free assessment",
     "cta2": "See subjects",
     "trust": [
-      "Rated 5 ★",
+      "5 ★ · 15 reviews",
       "Nearly a decade in tech and teaching",
       "Free initial assessment",
       "All ages · online"
@@ -296,6 +296,11 @@
     "eyebrow": "Reviews",
     "title": "What our students say",
     "items": [
+      {
+        "name": "Reynaldo",
+        "date": "October 2026",
+        "text": "What I value most is how he explains things, because he helps you understand concepts that seem quite complicated at first."
+      },
       {
         "name": "Jesús",
         "date": "January 2025",

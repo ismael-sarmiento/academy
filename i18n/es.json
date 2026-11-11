@@ -30,7 +30,7 @@
     "cta1": "Pide tu análisis gratuito",
     "cta2": "Ver materias",
     "trust": [
-      "Valoración de 5 ★",
+      "5 ★ · 15 valoraciones",
       "Casi una década en tecnología y docencia",
       "Análisis inicial gratuito",
       "Todas las edades · online"
@@ -296,6 +296,11 @@
     "eyebrow": "Opiniones",
     "title": "Lo que dicen nuestros alumnos",
     "items": [
+      {
+        "name": "Reynaldo",
+        "date": "octubre de 2026",
+        "text": "Lo que más valoro es su forma de explicar, porque consigue que entiendas cosas que al principio parecen bastante complicadas."
+      },
       {
         "name": "Jesús",
         "date": "enero de 2025",
