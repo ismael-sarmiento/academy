@@ -70,7 +70,7 @@ export function renderSamples() {
   const box = $('#samples');
   if (!box) return;
   if (notice?.node.isConnected) notice.node.textContent = t(notice.key) + '\n';
-  box.innerHTML = '';
+  box.replaceChildren();
   t('console.samples').forEach((sample, i) => {
     const button = document.createElement('button');
     button.type = 'button'; button.textContent = sample.name; button.dataset.sample = String(i);

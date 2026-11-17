@@ -2,7 +2,7 @@
 # Sets the cache-busting version of the whole site in ONE place: index.html.
 # - the import map lists every JS module as file.js?v=<version> (modules import each other without versions);
 # - the stylesheet and the entry script get the same version; i18n.js reads it from its own URL;
-# - the shared startup guard is embedded; its hash and the import map hash are recomputed independently;
+# - the shared startup guard is embedded; its hash, the import map hash and the speculation rules hash are recomputed;
 # - Alan (assistant + avatar) and his stylesheet come from the shared design system in /assets/ds/ (portada repository).
 # - 404.html is a copy of the portada's 404, the same page on every site.
 # Usage: tools/bump-version.sh [version]   (default: timestamp)
@@ -32,7 +32,10 @@ html = re.sub(r'<script type="importmap">.*?</script>', lambda m: f'<script type
 html = re.sub(r'''(css/main\.css|css/print\.css|js/app\.js|/assets/ds/assistant\.css|/assets/ds/tokens\.css|/assets/ds/contact\.css|/assets/ds/portrait\.css|/assets/ds/startup\.css)\?v=[^\s"'<>]+''', lambda m: f'{m[1]}?v={v}', html)
 digest = base64.b64encode(hashlib.sha256(importmap.encode()).digest()).decode()
 guard_digest = base64.b64encode(hashlib.sha256(guard.encode()).digest()).decode()
-html = re.sub(r"(?:'sha256-[A-Za-z0-9+/=]+'\s*)+", f"'sha256-{digest}' 'sha256-{guard_digest}'", html)
+# the speculation rules (prefetch of the next page, Modern Web Guidance) are an inline script too: their hash joins the CSP
+spec = re.search(r'<script type="speculationrules">(.*?)</script>', html, flags=re.S)
+spec_hash = f" 'sha256-{base64.b64encode(hashlib.sha256(spec[1].encode()).digest()).decode()}'" if spec else ''
+html = re.sub(r"(?:'sha256-[A-Za-z0-9+/=]+'\s*)+", f"'sha256-{digest}' 'sha256-{guard_digest}'{spec_hash}", html)
 (root / 'index.html').write_text(html)
 print(f'version → {v} ({len(modules)} modules, import map sha256-{digest[:10]}…)')
 PY
