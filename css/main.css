@@ -332,7 +332,7 @@ html:not(.js) .hero-grid { grid-template-columns: minmax(0, 1fr); }
 .console-label { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); margin: 14px 0 6px; }
 .code-surface { background: var(--ink-850); color: var(--mist-100); border: 1px solid rgba(255, 255, 255, .08); border-radius: var(--radius-sm); scrollbar-width: thin; scrollbar-color: var(--ink-500) transparent; }
 #pyEditor, #pyOut { width: 100%; font: 14px/1.6 var(--font-mono); border-radius: var(--radius-sm); padding: 16px; margin: 0; }
-#pyEditor { min-height: 200px; resize: vertical; tab-size: 4; }
+#pyEditor { min-height: 200px; resize: vertical; tab-size: 4; white-space: pre; overflow-wrap: normal; overflow-x: auto; }
 #pyEditor:focus-visible { outline: 2px solid var(--gold-400); outline-offset: 2px; }
 #pyOut { min-height: 80px; max-height: 260px; overflow: auto; background: var(--bg-alt); color: var(--text); white-space: pre-wrap; }
 #pyOut .err { color: var(--danger-text); }
